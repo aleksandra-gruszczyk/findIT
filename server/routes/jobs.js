@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   try {
     const jobs = await db.getJobs()
     res.json(jobs)
-  } catch(e) {
+  } catch (e) {
     console.error(e)
     res.sendStatus(500)
   }
