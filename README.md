@@ -1,24 +1,25 @@
-# Ambatsador
+# findIT
 
-## Getting Started 🦇
+## User story
 
-This repository uses [TailwindCSS](https://tailwindcss.com/) for styling. For the best developer experience, install the [TailwindCSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension for VSCode. Optionally, if you prefer, you may choose to use CSS Modules for a more traditional CSS experience.
+As a new developer graduate I can visit the web app and be greeted with a landing page with an input to filter available job roles to my preferred skills and region.
 
-### Frontend:
+I can then click a button that shows a stack of cards representing jobs matching any preferences set.
 
-- [React](https://beta.reactjs.org/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [CSS Modules](https://github.com/css-modules/css-modules)
-- [React Router](https://reactrouter.com/)
-- [Vite](https://vitejs.dev/)
-- [Redux](https://redux.js.org/)
+These job cards can then be:
+- Swiped left - Dismisses a role the user is not interested in.
+- Swiped right - Saves a role into a collection for interacting with later.
+- Flipped to a card backside - Reveals more information, including an apply button (or share link).
 
-### Backend:
+On the top-right corner is a button to view the collection of saved jobs. Here we see the same cards that were swiped right from before, but there some extra buttons to interact with:
+- Remove - Remove the card from the collection.
+- Apply - Takes the user to the website from which the role was sourced (eg: Seek).
 
-- [Express](https://expressjs.com/)
-- [Knex](http://knexjs.org/)
-- [PostgreSQL](https://www.postgresql.org/) # for deployment
-- [SQLite3](https://www.sqlite.org/index.html) # for development
+## Stretch
+
+If there are no results, a message pops up.
+If the user has runs out of results, show message to indicate.
+Dark/light mode
 
 ### Testing:
 
@@ -29,34 +30,7 @@ This repository uses [TailwindCSS](https://tailwindcss.com/) for styling. For th
 
 ## Contributing Guide 🐱
 
-To run this project:
-
-```sh
-# clone to your local machine
-cd ambatsador
-npm install
-npm run db:reset # will run migrations and seeds
-
-# to run the React client (Vite)
-npm run dev:client
-# will run the React client on http://localhost:5173
-
-# to run the API server (Express)
-npm run dev:server
-# will run the API server on http://localhost:6475
-```
 **NOTE**: Vite is set up to redirect all requests to `/api/anything` to the Express server. This is done in `vite.config.js`. Be sure to run both of them when developing!
-
-To preview what a production build would look like:
-
-```sh
-npm run preview
-# this does two things:
-# 1. builds the React client (outputs it to the `dist` folder)
-# 2. the API server on http://localhost:6475 and uses the `dist` folder to serve the client (see express.static() in server.js)
-```
-
-**NOTE**: Only do this when you want to view the staging build, use `npm run dev:client` and `npm run dev:server` for development.
 
 ## Snippets 🐈
 
