@@ -1,0 +1,31 @@
+# Project
+# =======
+# Place any project specific files or folders to ignore here
+
+dist/
+
+# SQLite DBs
+*.sqlite3
+
+# Jest coverage report
+coverage
+
+# Dotenv env settings
+.env
+
+
+# NodeJS
+# ======
+node_modules/
+
+
+# OS Specific
+# ===========
+# Windows
+thumbs.db
+# macOS
+.DS_Store
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
