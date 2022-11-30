@@ -1,5 +1,5 @@
 import express from 'express'
-const db = require('../db/jobs')
+const db = require('../db/jobs.js')
 
 const router = express.Router()
 
