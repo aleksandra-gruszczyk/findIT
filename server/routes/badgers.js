@@ -1,5 +1,6 @@
 import express from 'express'
-const { badgers, comments, votes } = require('../controllers')
+
+import { badgers, comments, votes } from '../controllers/index.js'
 
 const router = express.Router()
 
@@ -8,7 +9,6 @@ router.get('/:id', badgers.getOne)
 
 router.put('/:id/votes', votes.update)
 
-// router.get('/:id/comments', comments.getAll)
 router.post('/:id/comments', comments.add)
 router.delete('/:id/comments', comments.remove)
 
