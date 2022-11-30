@@ -7,7 +7,7 @@ export const up = (knex) => {
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
 
-    table.string('skills_id')
+    table.integer('skills_id')
       .references('skills.id')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')

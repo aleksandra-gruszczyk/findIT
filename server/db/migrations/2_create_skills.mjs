@@ -1,6 +1,6 @@
 export const up = (knex) => {
   return knex.schema.createTable('skills', (table) => {
-    table.integer('id')
+    table.increments('id').primary()
     table.string('skill')
   })
 }

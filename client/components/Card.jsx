@@ -17,11 +17,11 @@ export default function JobCard() {
 
   return (
     <ul>
-      {jobs.map((job, i) => (
-        <li key={i}>
+      {jobs.map((job) => (
+        <li key={job.id}>
           <Card shadow='sm' p='lg' radius='md' withBorder>
             <Card.Section>
-              <Image src={`${job.logo}`} />
+              <Image src={job.logo} />
             </Card.Section>
             <Group position='apart' mt='md' mb='xs'>
               <Text weight={500}>{job.company_name}</Text>
@@ -29,7 +29,7 @@ export default function JobCard() {
                 {job.location}
               </Badge>
             </Group>
-            <Text size='sm'>{job.role}</Text>{' '}
+            <Text size='sm'>{job.role}</Text>
             <Text size='sm' color='dimmed'>
               {job.byline}
             </Text>
@@ -38,7 +38,7 @@ export default function JobCard() {
               color='blue'
               mt='md'
               radius='md'
-              onClick={handleClick}
+              // onClick={handleClick}
             >
               <MdRotateRight />
             </Button>
