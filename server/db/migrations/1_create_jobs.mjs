@@ -4,7 +4,7 @@ export const up = (knex) => {
     table.string('company_name').notNullable()
     table.string('role').notNullable()
     table.string('location').notNullable()
-
+    table.text('details').notNullable()
     table.string('byline').notNullable()
     table.string('logo').notNullable()
     table.string('apply_link').notNullable()
