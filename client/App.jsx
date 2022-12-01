@@ -1,16 +1,17 @@
-import PageHome from './pages/home'
-import PageDetails from './pages/details'
-import { Route, Routes, Link } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
+
+import Pages from './pages'
 
 function App() {
   return (
     <main>
       <h1>
-        <Link to="/">Who is the cutest!?</Link>
+        <Link to='/'>findIT - Jobs are just a swipe away!</Link>
       </h1>
       <Routes>
-        <Route path="/" element={<PageHome />} />
-        <Route path="/the-cutest/:id" element={<PageDetails />} />
+        <Route path='/' element={<Pages.Home />} />
+        <Route path='/saved/:id' element={<Pages.SavedJobs />} />
+        <Route path='/job/:id' element={<Pages.JobDetails />} />
       </Routes>
     </main>
   )
