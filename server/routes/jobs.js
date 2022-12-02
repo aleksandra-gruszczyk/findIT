@@ -4,11 +4,13 @@ import * as db from '../db/models/index.js'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
   const filterQuery = req.body
+  console.log(filterQuery)
 
   try {
     const jobs = await db.jobs.getJobs(filterQuery)
+    console.log(jobs)
     res.json(jobs)
   } catch (e) {
     console.error(e)
