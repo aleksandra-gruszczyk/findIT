@@ -12,9 +12,10 @@ export default defineConfig({
   })],
   resolve: {
     alias: {
-      "@assets": path.resolve(__dirname, "./client/assets"),
-      "@components": path.resolve(__dirname, "./client/components"),
-      "@pages": path.resolve(__dirname, "./client/pages"),
+      '@assets': path.resolve(__dirname, './client/assets'),
+      '@components': path.resolve(__dirname, './client/components'),
+      '@pages': path.resolve(__dirname, './client/pages'),
+      '@store': path.resolve(__dirname, './client/store'),
     },
   },
   // Dev server proxy, does not apply to production build:

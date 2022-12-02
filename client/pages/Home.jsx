@@ -1,26 +1,19 @@
-import { useEffect, useState } from 'react'
+import useStoreJobFilters from '@store/jobFilters'
+import { useEffect } from 'react'
 import request from 'superagent'
-// import SwipeView from '@components/SwipeView'
+
+import Filter from '../components/FilterForm'
 
 export default function Home() {
-  const [jobs, setJobs] = useState(null)
+  const setChoices = useStoreJobFilters((state) => state.setChoices)
 
   useEffect(() => {
-    // `useEffect()` cannot take an async function as a parameter.
-    // You need to define a new async function to use one,
-    // or just use a promise with `.then(res => { ... })` instead.
-    const getJobs = async () => {
-      const res = request.get('/api/v1/jobs')
-      // Not implemented yet..
-      // setJobs(JSON.parse(res.text))
-    }
-
-    getJobs()
+    request.get('/api/v1/job-filters').then((res) => setChoices(res.body))
   }, [])
 
-  if (!jobs) {
-    return
-  }
-
-  return <div>{/* <SwipeView jobs={jobs} /> */}</div>
+  return (
+    <div>
+      <Filter />
+    </div>
+  )
 }
