@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react'
+import useStoreJobFilters from '@store/jobFilters'
+import { useEffect } from 'react'
 import request from 'superagent'
 
 import Filter from '../components/FilterForm'
-import useData from '../State/data'
 
 export default function Home() {
-  const setData = useData((state) => state.setData)
-  const mockData = ['Wellington', 'Auckland']
+  const setChoices = useStoreJobFilters((state) => state.setChoices)
 
   useEffect(() => {
-    setData(mockData)
+    request.get('/api/v1/job-filters').then((res) => setChoices(res.body))
   }, [])
 
   return (

@@ -16,7 +16,7 @@ export function getJobs(queryFilter, db = connection) {
     // Converts the requested skills to id values,
     // which can then be matched to a job via jobs_skills table:
     const subquery = db('skills')
-      .whereIn('skill', skills)
+      .whereIn('skill', queryFilter.skills)
       .select('id')
 
     query
@@ -40,6 +40,13 @@ export function getById(id, db = connection) {
       .then(includeSkills)
 }
 
+export function getAllRegions(db = connection) {
+  return db('jobs')
+    .groupBy('location')
+    .select('location')
+    .then(regions => regions.map(row => row.location))
+}
+
 async function includeSkills(job, db = connection) {
   return {
     ...job,
@@ -50,4 +57,5 @@ async function includeSkills(job, db = connection) {
 export default {
   getJobs,
   getById,
+  getAllRegions,
 }

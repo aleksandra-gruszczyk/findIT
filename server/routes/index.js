@@ -1,11 +1,11 @@
 import express from 'express'
 
+import filters from './job-filters.js'
 import jobs from './jobs.js'
-import skills from './skills.js'
 
 const router = express.Router()
 
 router.use('/jobs', jobs)
-router.use('/skills', skills)
+router.use('/job-filters', filters)
 
 export default router

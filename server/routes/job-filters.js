@@ -6,8 +6,9 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
+    const regions = await db.jobs.getAllRegions()
     const skills = await db.skills.getAll()
-    res.json(skills)
+    res.json({regions, skills})
   } catch (e) {
     console.error(e)
     res.sendStatus(500)
