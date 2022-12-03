@@ -15,6 +15,7 @@ import {
   Title,
 } from '@mantine/core'
 import { BsPatchCheckFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
 export default function LandingView() {
   return (
@@ -85,6 +86,8 @@ function BulletPoints() {
 }
 
 function ButtonStuff() {
+  const navigate = useNavigate()
+
   return (
     <Group mt={30}>
       <Button
@@ -92,6 +95,7 @@ function ButtonStuff() {
         size='md'
         color='orange'
         style={{ fontFamily: 'Eb Garamond' }}
+        onClick={() => navigate('/jobs/swipe')}
       >
         Get started
       </Button>

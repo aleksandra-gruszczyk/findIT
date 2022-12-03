@@ -1,9 +1,37 @@
 import SwipingDeck from '@components/Deck/SwipingDeck'
-import useJobFavourites from '@store/jobFavourites'
+import useStoreJobFilters from '@store/jobFilters'
 import useJobs from '@store/jobs'
+import { useEffect } from 'react'
+import request from 'superagent'
 
-// TODO: No longer a page component, should be moved to components folder
-export default function Deck() {
+import Filter from '../components/FilterForm'
+
+export default function CardView() {
+  const setChoices = useStoreJobFilters((state) => state.setChoices)
+
+  useEffect(() => {
+    request.get('/api/v1/job-filters').then((res) => setChoices(res.body))
+  }, [])
+
+  return (
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        position: 'absolute',
+        left: 0,
+        top: 0,
+      }}
+    >
+      <CardStack />
+      <div style={{ maxWidth: 500, margin: '0 auto' }}>
+        <Filter />
+      </div>
+    </div>
+  )
+}
+
+export function CardStack() {
   const jobs = useJobs((state) => state.jobs)
 
   return (
