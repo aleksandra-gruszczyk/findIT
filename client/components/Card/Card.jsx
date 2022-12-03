@@ -50,17 +50,22 @@ export function Back({ job, className, ...props }) {
       radius='md'
       withBorder
       className={className}
-      style={props.style}
-      // {...props}
+      style={{ ...props.style, display: 'flex', flexDirection: 'column' }}
     >
-      <Group position='apart' mt='md' mb='xs'>
-        <Text weight={500}>{job.role}</Text>
-      </Group>
-      <Text size='sm' color='dimmed'>
-        {job.details}
-      </Text>
-      <FlipButton />
-      <a href={job.apply_link}>APPLY</a>
+      <Stack justify='space-between' align='flex-start' style={{ flexGrow: 1 }}>
+        <div>
+          <Group position='apart' mt='md' mb='xs'>
+            <Text weight={500}>{job.role}</Text>
+          </Group>
+          <Text size='sm' color='dimmed'>
+            {job.details}
+          </Text>
+        </div>
+        <div>
+          <FlipButton />
+          <a href={job.apply_link}>APPLY</a>
+        </div>
+      </Stack>
     </Card>
   )
 }

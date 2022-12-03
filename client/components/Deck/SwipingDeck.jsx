@@ -47,7 +47,7 @@ export default function CardStack({ children, onSwipeRight }) {
         const scale = down ? 1.1 : 1 // Active cards lift up a bit
 
         if (isGone && dir === 1) {
-          addToFavourites(children[i])
+          onSwipeRight(i)
         }
 
         return {
