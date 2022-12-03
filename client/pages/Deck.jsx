@@ -1,33 +1,15 @@
 import JobCard from '@components/Card/CardFlipTest'
 import SwipingDeck from '@components/Deck/SwipingDeck'
+import FilterForm from '@components/FilterForm'
 import useStoreJobFavourites from '@store/jobFavourites'
-import useStoreJobFilters from '@store/jobFilters'
 import useJobs from '@store/jobs'
-import { useEffect } from 'react'
-import request from 'superagent'
-
-import Filter from '../components/FilterForm'
 
 export default function CardView() {
-  const setChoices = useStoreJobFilters((state) => state.setChoices)
-
-  useEffect(() => {
-    request.get('/api/v1/job-filters').then((res) => setChoices(res.body))
-  }, [])
-
   return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        position: 'absolute',
-        left: 0,
-        top: 0,
-      }}
-    >
+    <div style={styles.cardView}>
       <CardStack />
       <div style={{ maxWidth: 500, margin: '0 auto' }}>
-        <Filter />
+        <FilterForm />
       </div>
     </div>
   )
@@ -58,4 +40,14 @@ function FavouritesCounter() {
   const favourites = useStoreJobFavourites((state) => state.favourites)
 
   return <span style={{ position: 'absolute' }}>{favourites.length}</span>
+}
+
+const styles = {
+  cardView: {
+    width: '100vw',
+    height: '100vh',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+  },
 }
