@@ -4,9 +4,13 @@ import FavouritesCounter from '@components/FavouritesCounter'
 import FilterForm from '@components/FilterForm'
 import { css } from '@emotion/react'
 import useStoreJobFavourites from '@store/jobFavourites'
-import useJobs from '@store/jobs'
+import useStoreJobs from '@store/jobs'
+import { useEffect } from 'react'
 
 export default function CardView() {
+  const resetJobs = useStoreJobs((state) => state.resetJobs)
+  useEffect(resetJobs, [])
+
   return (
     <div style={styles.cardView}>
       <CardStack />
@@ -18,7 +22,7 @@ export default function CardView() {
 }
 
 export function CardStack() {
-  const jobs = useJobs((state) => state.jobs)
+  const jobs = useStoreJobs((state) => state.jobs)
   const addToFavourites = useStoreJobFavourites(
     (state) => state.addToFavourites
   )
