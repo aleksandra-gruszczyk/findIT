@@ -7,7 +7,7 @@ function App() {
     <main>
       <Routes>
         <Route path='/' element={<Pages.Home />} />
-        <Route path='/saved/:id' element={<Pages.SavedJobs />} />
+        <Route path='/saved' element={<Pages.SavedJobs />} />
         <Route path='/jobs/swipe' element={<Pages.Deck />} />
       </Routes>
     </main>

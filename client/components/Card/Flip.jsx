@@ -22,6 +22,7 @@ function _Flip({ front: Front, back: Back }, ref) {
         // rotateY: https://react-spring.dev/basics#shorthand-style-props
         style={{
           transform,
+          // adds additional offset to the transform rotateY value
           rotateY: '180deg',
         }}
       >
