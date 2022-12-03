@@ -1,18 +1,10 @@
 import { css } from '@emotion/react'
-import { Badge, Button, Card, Group, Image, Stack, Text } from '@mantine/core'
-import { MdRotateRight } from 'react-icons/md'
+import { Badge, Button, Card, Group, Image, Text, Title } from '@mantine/core'
+import { HiOutlineExternalLink } from 'react-icons/hi'
 
-export function Front({ job, className, ...props }) {
+export function Front({ job, flipCard }) {
   return (
-    <Card
-      shadow='sm'
-      p='lg'
-      radius='md'
-      withBorder
-      className={className}
-      {...props}
-      style={{ ...props.style, display: 'flex', flexDirection: 'column' }}
-    >
+    <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
       <Card.Section>
         {/* <Image src={job.logo} /> */}
         <Image
@@ -22,7 +14,8 @@ export function Front({ job, className, ...props }) {
           withPlaceholder
         />
       </Card.Section>
-      <Stack justify='space-between' align='flex-start' style={{ flexGrow: 1 }}>
+      {/* <Stack justify='space-between' align='flex-end' style={{ flexGrow: 1 }}> */}
+      <div css={styles.stack}>
         <div>
           <Group position='apart' mt='md' mb='xs'>
             <Text weight={500}>{job.company_name}</Text>
@@ -35,60 +28,89 @@ export function Front({ job, className, ...props }) {
             {job.byline}
           </Text>
         </div>
-
-        <FlipButton />
-      </Stack>
+        <Group position='right'>
+          <Button
+            variant='light'
+            color='blue'
+            mt='md'
+            radius='md'
+            onClick={flipCard}
+          >
+            Tell me more!
+          </Button>
+        </Group>
+        {/* </Stack> */}
+      </div>
     </Card>
   )
 }
 
-export function Back({ job, className, ...props }) {
+export function Back({ job, flipCard }) {
   return (
-    <Card
-      shadow='sm'
-      p='lg'
-      radius='md'
-      withBorder
-      className={className}
-      style={{ ...props.style, display: 'flex', flexDirection: 'column' }}
-    >
-      <Stack justify='space-between' align='flex-start' style={{ flexGrow: 1 }}>
+    <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
+      {/* <Stack justify='space-between' align='flex-end' style={{ flexGrow: 1 }}> */}
+      <div css={styles.stack}>
         <div>
-          <Group position='apart' mt='md' mb='xs'>
-            <Text weight={500}>{job.role}</Text>
+          <Group position='apart' mb='xs'>
+            <Title order={2} size={20}>
+              {job.role}
+            </Title>
           </Group>
           <Text size='sm' color='dimmed'>
             {job.details}
           </Text>
         </div>
-        <div>
-          <FlipButton />
-          <a href={job.apply_link}>APPLY</a>
-        </div>
-      </Stack>
+
+        <Group position='right'>
+          <Button
+            component='a'
+            href={job.apply_link}
+            variant='light'
+            color='blue'
+            radius='md'
+            leftIcon={<HiOutlineExternalLink size={14} />}
+          >
+            Apply
+          </Button>
+
+          <Button variant='light' color='blue' radius='md' onClick={flipCard}>
+            Back
+          </Button>
+        </Group>
+        {/* </Stack> */}
+      </div>
     </Card>
   )
 }
 
-function FlipButton() {
-  return (
-    <Button
-      variant='light'
-      color='blue'
-      mt='md'
-      radius='md'
-      // onClick={handleClick}
-    >
-      <MdRotateRight />
-    </Button>
-  )
-}
-
 const styles = {
-  // Fades out byline text if it's too long..
+  // Fades out byline text if it's too long (roughly 4 lines max):
   byline: css`
-    height: 90px;
-    mask-image: linear-gradient(black, 80%, transparent);
+    max-height: 120px;
+    mask-image: linear-gradient(black, 90px, transparent);
     overflow: hidden;
+  `,
+
+  card: css`
+    width: 350px;
+    height: 450px;
+
+    /* layout */
+    display: flex;
+    flex-direction: column;
+
+    /* card corners and shadow */
+    border-radius: 12px;
+    box-shadow: 0 12px 12px rgb(0 0 0 / 12%);
+
+    /* prevent text selection */
+    user-select: none;
+  `,
+
+  stack: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
   `,
 }

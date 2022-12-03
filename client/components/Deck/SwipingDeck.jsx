@@ -69,13 +69,14 @@ export default function CardStack({ children, onSwipeRight }) {
   )
 
   return (
-    <div css={deckContainerStyles}>
+    <div css={styles.stackContainer}>
       {springs.map(({ x, y, rot, scale }, i) => (
-        // Falling into stack animation:
         <animated.div
-          css={deckStyles}
+          css={styles.draggableItem}
           key={i}
+          // Items falling into a stack animation:
           style={{ x, y, transform: interpolate([rot, scale], trans) }}
+          // Draggable functionality:
           {...bind(i)}
         >
           {children[i]}
@@ -85,46 +86,39 @@ export default function CardStack({ children, onSwipeRight }) {
   )
 }
 
-const deckContainerStyles = css`
-  background: lightblue;
+const styles = {
+  stackContainer: css`
+    background: lightblue;
 
-  // Center child elements
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    // Center child elements
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  // Stretch this elements bounds to the containing blocks bounds:
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    // Stretch this elements bounds to the containing blocks bounds:
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-  // Cards are flung out of the elements bounds,
-  // clip those bounds, otherwise adds a scrollbar from the extended width
-  overflow: hidden;
-`
+    // Cards are flung out of the elements bounds,
+    // clip those bounds, otherwise adds a scrollbar from the extended width
+    overflow: hidden;
+  `,
 
-const deckStyles = css`
-  /* width: 300px; */
-  /* height: 200px; */
-
-  position: absolute;
-
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-
-  will-change: transform;
-  // Important for element with drag gesture
-  // for correct behaviour on touch devices
-  touch-action: none;
-
-  > div {
-    border-radius: 10px;
-    box-shadow: 0 12px 12px rgb(0 0 0 / 12%);
+  draggableItem: css`
+    position: absolute;
     will-change: transform;
-    /* touch-action: none; */
-    user-select: none;
-  }
-`
+
+    // Important for element with drag gesture
+    // for correct behaviour on touch devices
+    touch-action: none;
+
+    /* Indicate content can be dragged, and when it is actively dragged */
+    cursor: grab;
+    :active {
+      cursor: grabbing;
+    }
+  `,
+}

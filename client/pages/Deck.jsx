@@ -1,4 +1,4 @@
-import JobCard from '@components/Card/CardFlipTest'
+import { JobCard } from '@components/Card/CardFlipTest'
 import SwipingDeck from '@components/Deck/SwipingDeck'
 import FilterForm from '@components/FilterForm'
 import useStoreJobFavourites from '@store/jobFavourites'
