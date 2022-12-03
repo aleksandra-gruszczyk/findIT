@@ -1,11 +1,14 @@
 import { Button, MultiSelect, Select } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import useStoreJobFilters from '@store/jobFilters'
-import React, { useState } from 'react'
+import useStoreJobs from '@store/jobs'
 
 import { getJobs } from '../apis/jobs'
+
 export default function Filter() {
   const choices = useStoreJobFilters((state) => state.choices)
+  const setJobs = useStoreJobs((state) => state.setJobs)
+
   const form = useForm({
     initialValues: {
       location: '',
@@ -14,8 +17,9 @@ export default function Filter() {
   })
 
   function handleSubmit(values) {
-    getJobs(values).then(console.log)
+    getJobs(values).then(setJobs)
   }
+
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <Select

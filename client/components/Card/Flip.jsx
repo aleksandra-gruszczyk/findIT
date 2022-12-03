@@ -1,35 +1,39 @@
 import { css } from '@emotion/react'
-import { useSpring } from '@react-spring/web'
-import { useState } from 'react'
+import { animated, useSpring } from '@react-spring/web'
+import { forwardRef, useImperativeHandle, useState } from 'react'
 
-export default function Flip({ front: Front, back: Back }) {
+export const Flip = forwardRef(_Flip)
+
+function _Flip({ front: Front, back: Back }, ref) {
   const [flipped, setFlipped] = useState(false)
-  const { transform, opacity } = useSpring(springConfig(flipped))
+  const { transform } = useSpring(flipConfig(flipped))
 
-  const flipCard = () => setFlipped((state) => !state)
+  const toggleFlip = () => setFlipped((state) => !state)
+  useImperativeHandle(ref, () => ({ toggleFlip }))
 
   return (
-    <div css={cardContainer} onClick={flipCard}>
-      <Front
+    <div css={cardContainer}>
+      <animated.div css={cardStyles} style={{ transform }}>
+        {Front}
+      </animated.div>
+
+      <animated.div
         css={cardStyles}
-        style={{ opacity: opacity.to((o) => 1 - o), transform }}
-      />
-      <Back
-        css={cardStyles}
+        // rotateY: https://react-spring.dev/basics#shorthand-style-props
         style={{
-          opacity,
           transform,
-          rotateX: '180deg',
+          rotateY: '180deg',
         }}
-      />
+      >
+        {Back}
+      </animated.div>
     </div>
   )
 }
 
-function springConfig(flipped) {
+function flipConfig(flipped) {
   return {
-    opacity: flipped ? 1 : 0,
-    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    transform: `perspective(600px) rotateY(${flipped ? 180 : 0}deg)`,
     config: { mass: 5, tension: 500, friction: 80 },
   }
 }
@@ -37,16 +41,14 @@ function springConfig(flipped) {
 const cardContainer = css`
   display: flex;
   align-items: center;
-  height: 100%;
   justify-content: center;
 `
 
 const cardStyles = css`
+  /* Overlap front and back panes */
   position: absolute;
-  max-width: 500px;
-  max-height: 500px;
-  width: 350px;
-  height: 200px;
-  cursor: pointer;
-  will-change: transform, opacity;
+
+  will-change: transform;
+  /* When flipped, the back of a pane should not be visible */
+  backface-visibility: hidden;
 `
