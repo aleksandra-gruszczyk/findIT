@@ -30,13 +30,12 @@ const layout = css`
 const base = css`
   body {
     font-family: 'Noto Sans';
-    background-color: hsl(220deg 25% 10%);
+    /* background-color: hsl(220deg 25% 10%); */
     margin: 0 min(5vw, 120px);
   }
 
   h1 {
-    color: white;
-    font-family: 'Caveat';
+    font-family: 'EB Garamond', serif;
     /* range: 40px to 80px */
     font-size: clamp(2.5rem, 12vw, 5rem);
     font-weight: 700;
