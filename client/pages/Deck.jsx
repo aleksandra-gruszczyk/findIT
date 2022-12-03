@@ -1,11 +1,10 @@
 import { JobCard } from '@components/Card/CardFlipTest'
 import SwipingDeck from '@components/Deck/SwipingDeck'
+import FavouritesCounter from '@components/FavouritesCounter'
 import FilterForm from '@components/FilterForm'
-import { Button, Space, Text } from '@mantine/core'
+import { css } from '@emotion/react'
 import useStoreJobFavourites from '@store/jobFavourites'
 import useJobs from '@store/jobs'
-import { BsSuitHeartFill } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
 
 export default function CardView() {
   return (
@@ -30,26 +29,8 @@ export function CardStack() {
       <SwipingDeck onSwipeRight={(i) => addToFavourites(jobs[i])}>
         {items}
       </SwipingDeck>
-      <FavouritesCounter />
+      <FavouritesCounter css={styles.favourites} />
     </div>
-  )
-}
-
-// If we didn't have a separate component for this,
-// when the `favourites` state is updated elsewhere (eg within SwipingDeck),
-// it would re-render the Deck component, which then re-renders SwipingDeck
-// TODO: This can now be split out to a separate component
-function FavouritesCounter() {
-  const favourites = useStoreJobFavourites((state) => state.favourites)
-
-  return (
-    <Link to='/saved/:id'>
-      <Button color='orange' radius='md'>
-        <BsSuitHeartFill />
-        <Space w='sm' />
-        <Text>{favourites.length}</Text>
-      </Button>
-    </Link>
   )
 }
 
@@ -61,4 +42,11 @@ const styles = {
     left: 0,
     top: 0,
   },
+
+  favourites: css`
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px;
+  `,
 }
