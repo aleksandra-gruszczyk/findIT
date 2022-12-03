@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import { animated, to as interpolate, useSprings } from '@react-spring/web'
+import useJobFavourites from '@store/jobFavourites'
 import { useDrag } from '@use-gesture/react'
 import { useState } from 'react'
 
@@ -18,6 +19,7 @@ const trans = (r, s) => `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
 export default function CardStack({ jobs }) {
   const [gone] = useState(() => new Set())
+  const addToFavourites = useJobFavourites((state) => state.addToFavourites)
 
   const [springs, api] = useSprings(
     jobs.length,
@@ -47,6 +49,10 @@ export default function CardStack({ jobs }) {
         const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0 // When a card is gone it flys out left or right, otherwise goes back to zero
         const rot = mx / 100 + (isGone ? dir * 10 * velocityX : 0) // How much the card tilts, flicking it harder makes it rotate faster
         const scale = down ? 1.1 : 1 // Active cards lift up a bit
+
+        if (isGone && dir === 1) {
+          addToFavourites(jobs[i])
+        }
 
         return {
           x,
