@@ -1,10 +1,7 @@
 import { css } from '@emotion/react'
 import { animated, to as interpolate, useSprings } from '@react-spring/web'
-import useJobFavourites from '@store/jobFavourites'
 import { useDrag } from '@use-gesture/react'
 import { useState } from 'react'
-
-import StackingDeck from '../Card/CardFlipTest'
 
 const to = (i) => ({
   x: 0,
@@ -17,12 +14,11 @@ const to = (i) => ({
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 const trans = (r, s) => `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
-export default function CardStack({ jobs }) {
+export default function CardStack({ children, onSwipeRight }) {
   const [gone] = useState(() => new Set())
-  const addToFavourites = useJobFavourites((state) => state.addToFavourites)
 
   const [springs, api] = useSprings(
-    jobs.length,
+    children.length,
     (i) => ({
       ...to(i),
       from: from(i),
@@ -51,7 +47,7 @@ export default function CardStack({ jobs }) {
         const scale = down ? 1.1 : 1 // Active cards lift up a bit
 
         if (isGone && dir === 1) {
-          addToFavourites(jobs[i])
+          addToFavourites(children[i])
         }
 
         return {
@@ -64,7 +60,7 @@ export default function CardStack({ jobs }) {
       })
 
       // reset card stack, animate back to "to()" positions
-      if (!down && gone.size === jobs.length)
+      if (!down && gone.size === children.length)
         setTimeout(() => {
           gone.clear()
           api.start((i) => to(i))
@@ -82,29 +78,12 @@ export default function CardStack({ jobs }) {
           style={{ x, y, transform: interpolate([rot, scale], trans) }}
           {...bind(i)}
         >
-          <StackingDeck job={jobs[i]} />
+          {children[i]}
         </animated.div>
       ))}
     </div>
   )
 }
-
-/*
-// Rotation and scale portion was separated with the bind to an inner div for some reason?
-<StackingDeck
-  job={jobs[i]}
-  // re-render flip component and children many times during animation
-  // style={{
-  //   transform: interpolate([rot, scale], trans),
-  // }}
-  // re-renders each child when bind update is triggered
-  // - only seems to occur if swipe triggers state store update
-  // - it was due to parent component Deck receiving an update of favourites
-  //   state, thus triggering a re-render of SwipingDeck. Fixed by moving
-  //   that state into a sibling component.
-  // {...bind(i)}
-/>
-*/
 
 const deckContainerStyles = css`
   background: lightblue;

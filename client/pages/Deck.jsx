@@ -1,4 +1,6 @@
+import JobCard from '@components/Card/CardFlipTest'
 import SwipingDeck from '@components/Deck/SwipingDeck'
+import useStoreJobFavourites from '@store/jobFavourites'
 import useStoreJobFilters from '@store/jobFilters'
 import useJobs from '@store/jobs'
 import { useEffect } from 'react'
@@ -33,10 +35,16 @@ export default function CardView() {
 
 export function CardStack() {
   const jobs = useJobs((state) => state.jobs)
+  const addToFavourites = useStoreJobFavourites(
+    (state) => state.addToFavourites
+  )
+  const items = jobs.map((job) => <JobCard key={job.id} job={job} />)
 
   return (
     <div>
-      <SwipingDeck jobs={jobs} />
+      <SwipingDeck onSwipeRight={(i) => addToFavourites(jobs[i])}>
+        {items}
+      </SwipingDeck>
       <FavouritesCounter />
     </div>
   )
@@ -47,7 +55,7 @@ export function CardStack() {
 // it would re-render the Deck component, which then re-renders SwipingDeck
 // TODO: This can now be split out to a separate component
 function FavouritesCounter() {
-  const favourites = useJobFavourites((state) => state.favourites)
+  const favourites = useStoreJobFavourites((state) => state.favourites)
 
   return <span style={{ position: 'absolute' }}>{favourites.length}</span>
 }
