@@ -12,7 +12,7 @@ export default function CardView() {
   useEffect(resetJobs, [])
 
   return (
-    <div style={styles.cardView}>
+    <div css={styles.cardView}>
       <CardStack />
       <div style={{ maxWidth: 500, margin: '0 auto' }}>
         <FilterForm />
@@ -39,18 +39,20 @@ export function CardStack() {
 }
 
 const styles = {
-  cardView: {
-    width: '100vw',
-    height: '100vh',
-    position: 'absolute',
-    left: 0,
-    top: 0,
-  },
+  cardView: css`
+    width: 100%;
+    /* Ensure that absolute children are contained within this parent */
+    position: relative;
+    /* This element will be given any remaining space on the flex-axis */
+    flex-grow: 1;
+    background: lightblue;
+  `,
 
   favourites: css`
     position: absolute;
     top: 0;
     right: 0;
+
     margin: 8px;
   `,
 }

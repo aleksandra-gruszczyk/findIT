@@ -1,6 +1,5 @@
 import { JobCard } from '@components/Card'
 import { css } from '@emotion/react'
-import { Grid } from '@mantine/core'
 import useStoreJobFavourites from '@store/jobFavourites'
 
 export default function SavedJobs() {

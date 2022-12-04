@@ -88,8 +88,6 @@ export default function CardStack({ children, onSwipeRight }) {
 
 const styles = {
   stackContainer: css`
-    background: lightblue;
-
     // Center child elements
     display: flex;
     align-items: center;
