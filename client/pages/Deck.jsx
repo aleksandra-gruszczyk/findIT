@@ -1,7 +1,7 @@
-import { JobCard } from '@components/Card/CardFlipTest'
-import SwipingDeck from '@components/Deck/SwipingDeck'
+import { JobCard } from '@components/Card'
 import FavouritesCounter from '@components/FavouritesCounter'
 import FilterForm from '@components/FilterForm'
+import utils from '@components/utils'
 import { css } from '@emotion/react'
 import useStoreJobFavourites from '@store/jobFavourites'
 import useStoreJobs from '@store/jobs'
@@ -30,9 +30,9 @@ export function CardStack() {
 
   return (
     <div>
-      <SwipingDeck onSwipeRight={(i) => addToFavourites(jobs[i])}>
+      <utils.SwipeStack onSwipeRight={(i) => addToFavourites(jobs[i])}>
         {items}
-      </SwipingDeck>
+      </utils.SwipeStack>
       <FavouritesCounter css={styles.favourites} />
     </div>
   )
