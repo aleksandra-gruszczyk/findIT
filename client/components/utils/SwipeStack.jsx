@@ -59,11 +59,14 @@ export default function CardStack({ children, onSwipeRight }) {
         }
       })
 
-      // reset card stack, animate back to "to()" positions
       if (!down && gone.size === children.length)
         setTimeout(() => {
           gone.clear()
-          api.start((i) => to(i))
+          // Restart falling stack animation:
+          api.start((i) => ({
+            ...to(i),
+            from: from(i),
+          }))
         }, 600)
     }
   )
