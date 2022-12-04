@@ -1,18 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import request from 'superagent'
+import { JobCard } from '@components/Card'
+import { css } from '@emotion/react'
+import { Grid } from '@mantine/core'
+import useStoreJobFavourites from '@store/jobFavourites'
 
 export default function SavedJobs() {
-  const [jobs, setJobs] = useState(null)
+  const favourites = useStoreJobFavourites((state) => state.favourites)
 
-  useEffect(() => {
-    // request
-    //   .get('/api/v1/jobs/saved/')
-    //   .then((res) => setJobs(JSON.parse(res.text)))
-  }, [])
+  const savedJobs = favourites.map((favouriteJob) => (
+    <li key={favouriteJob.id}>
+      <JobCard job={favouriteJob} />
+    </li>
+  ))
 
-  if (!jobs) {
-    return
-  }
-
-  return <div>{/* <Job data={job} /> */}</div>
+  return <ul css={grid}>{savedJobs}</ul>
 }
+
+const grid = css`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 50px;
+  max-width: fit-content;
+
+  margin: 0;
+  padding: 0;
+
+  > li {
+    list-style: none;
+  }
+`

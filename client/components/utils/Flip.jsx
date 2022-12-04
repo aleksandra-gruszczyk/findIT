@@ -43,6 +43,9 @@ const cardContainer = css`
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Should be same as Card.Front + Card.Back */
+  width: 350px;
+  height: 450px;
 `
 
 const cardStyles = css`

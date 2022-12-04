@@ -31,7 +31,7 @@ const base = css`
   body {
     font-family: 'Noto Sans';
     /* background-color: hsl(220deg 25% 10%); */
-    margin: 0 min(5vw, 120px);
+    /* margin: 0 min(5vw, 120px); */
   }
 
   h1 {
