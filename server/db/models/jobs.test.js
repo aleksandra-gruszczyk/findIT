@@ -13,8 +13,11 @@ beforeEach(() => {
 
 describe('gets jobs filtered by location and skillIdArr', () => {
   it('does something', async () => {
-    const jobs = await getJobs([1, 2], 'Auckland')
-    expect(jobs).toHaveLength(3)
+    const jobs = await getJobs({
+      skills: ['.Net', 'React Native'],
+      location: 'Auckland',
+    })
+    expect(jobs).toHaveLength(2)
   })
 })
 
