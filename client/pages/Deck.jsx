@@ -1,0 +1,58 @@
+import { JobCard } from '@components/Card'
+import FavouritesCounter from '@components/FavouritesCounter'
+import FilterForm from '@components/FilterForm'
+import Utils from '@components/utils'
+import { css } from '@emotion/react'
+import useStoreJobFavourites from '@store/jobFavourites'
+import useStoreJobs from '@store/jobs'
+import { useEffect } from 'react'
+
+export default function CardView() {
+  const resetJobs = useStoreJobs((state) => state.resetJobs)
+  useEffect(resetJobs, [])
+
+  return (
+    <div css={styles.cardView}>
+      <CardStack />
+      <div style={{ maxWidth: 500, margin: '0 auto' }}>
+        <FilterForm />
+      </div>
+    </div>
+  )
+}
+
+export function CardStack() {
+  const jobs = useStoreJobs((state) => state.jobs)
+  const addToFavourites = useStoreJobFavourites(
+    (state) => state.addToFavourites
+  )
+  const items = jobs.map((job) => <JobCard key={job.id} job={job} />)
+
+  return (
+    <div>
+      <Utils.SwipeableStack onSwipeRight={(i) => addToFavourites(jobs[i])}>
+        {items}
+      </Utils.SwipeableStack>
+      <FavouritesCounter css={styles.favourites} />
+    </div>
+  )
+}
+
+const styles = {
+  cardView: css`
+    width: 100%;
+    /* Ensure that absolute children are contained within this parent */
+    position: relative;
+    /* This element will be given any remaining space on the flex-axis */
+    flex-grow: 1;
+    background: lightblue;
+  `,
+
+  favourites: css`
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    margin: 8px;
+  `,
+}

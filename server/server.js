@@ -3,6 +3,8 @@ import 'dotenv/config'
 import express from 'express'
 import path from 'path'
 
+import routes from './routes/index.js'
+
 const server = express()
 
 
@@ -13,6 +15,7 @@ server.use(express.urlencoded({ extended: false }))
 
 
 // Routes:
+server.use('/api/v1', routes)
 
 
 const env = process.env.NODE_ENV || 'development'
