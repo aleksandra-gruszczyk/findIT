@@ -1,6 +1,7 @@
-import * as Card from '@components/Card/Card'
-import { Flip } from '@components/Card/Flip'
+import utils from '@components/utils'
 import { useRef } from 'react'
+
+import * as Card from './Card'
 
 export function JobCard({ job }) {
   const ref = useRef(null)
@@ -13,7 +14,7 @@ export function JobCard({ job }) {
   }
 
   return (
-    <Flip
+    <utils.Flip
       front={<Card.Front job={job} flipCard={toggleFlip} />}
       back={<Card.Back job={job} flipCard={toggleFlip} />}
       ref={ref}
