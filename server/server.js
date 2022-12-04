@@ -16,14 +16,7 @@ server.use(express.urlencoded({ extended: false }))
 
 // Routes:
 server.use('/api/v1', routes)
-// 404 fallback if route is not valid:
-// server.use('/api/*', (req, res) => {
-//   res.sendStatus(404)
-// })
 
-
-// Static assets:
-// server.use(express.static(path.resolve('public')))
 
 const env = process.env.NODE_ENV || 'development'
 const isDev = env === 'development'

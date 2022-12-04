@@ -6,7 +6,6 @@ const router = express.Router()
 
 router.post('/', async (req, res) => {
   const filterQuery = req.body
-  console.log(filterQuery)
 
   try {
     const jobs = await db.jobs.getJobs(filterQuery)

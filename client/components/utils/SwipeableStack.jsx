@@ -14,7 +14,7 @@ const to = (i) => ({
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 const trans = (r, s) => `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
-export default function CardStack({ children, onSwipeRight }) {
+export default function SwipeableStack({ children, onSwipeRight }) {
   const [gone] = useState(() => new Set())
 
   const [springs, api] = useSprings(
