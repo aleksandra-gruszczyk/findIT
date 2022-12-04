@@ -1,4 +1,4 @@
-import { Flip } from './Flip'
-import SwipeStack from './SwipeStack'
+import { Flippable } from './Flippable'
+import SwipeableStack from './SwipeableStack'
 
-export default { Flip, SwipeStack }
+export default { Flippable, SwipeableStack }

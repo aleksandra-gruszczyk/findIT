@@ -14,7 +14,7 @@ const to = (i) => ({
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 const trans = (r, s) => `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
-export default function CardStack({ children, onSwipeRight }) {
+export default function SwipeableStack({ children, onSwipeRight }) {
   const [gone] = useState(() => new Set())
 
   const [springs, api] = useSprings(
@@ -59,11 +59,14 @@ export default function CardStack({ children, onSwipeRight }) {
         }
       })
 
-      // reset card stack, animate back to "to()" positions
       if (!down && gone.size === children.length)
         setTimeout(() => {
           gone.clear()
-          api.start((i) => to(i))
+          // Restart falling stack animation:
+          api.start((i) => ({
+            ...to(i),
+            from: from(i),
+          }))
         }, 600)
     }
   )
@@ -88,8 +91,6 @@ export default function CardStack({ children, onSwipeRight }) {
 
 const styles = {
   stackContainer: css`
-    background: lightblue;
-
     // Center child elements
     display: flex;
     align-items: center;

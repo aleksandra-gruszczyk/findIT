@@ -2,9 +2,9 @@ import { css } from '@emotion/react'
 import { animated, useSpring } from '@react-spring/web'
 import { forwardRef, useImperativeHandle, useState } from 'react'
 
-export const Flip = forwardRef(_Flip)
+export const Flippable = forwardRef(_Flippable)
 
-function _Flip({ front: Front, back: Back }, ref) {
+function _Flippable({ front: Front, back: Back }, ref) {
   const [flipped, setFlipped] = useState(false)
   const { transform } = useSpring(flipConfig(flipped))
 
@@ -43,6 +43,9 @@ const cardContainer = css`
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Should be same as Card.Front + Card.Back */
+  width: 350px;
+  height: 450px;
 `
 
 const cardStyles = css`

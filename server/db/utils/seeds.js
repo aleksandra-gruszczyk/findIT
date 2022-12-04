@@ -46,7 +46,6 @@ const jobs_skills_mapping = mockData.map((job) => {
 }).flat()
 
 export default {
-  // jobs,
   skills,
   jobs_skills_mapping,
 }

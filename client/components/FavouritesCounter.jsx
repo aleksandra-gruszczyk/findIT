@@ -7,7 +7,7 @@ export default function FavouritesCounter(props) {
   const favourites = useStoreJobFavourites((state) => state.favourites)
 
   return (
-    <Link to='/saved/:id'>
+    <Link to='/saved'>
       <Button color='orange' radius='md' className={props.className}>
         <BsSuitHeartFill />
         <Space w='sm' />
