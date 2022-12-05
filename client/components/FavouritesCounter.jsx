@@ -11,12 +11,12 @@ export default function FavouritesCounter(props) {
   }
 
   return (
-    <Link to='/saved'>
-      <Button color='orange' radius='md' className={props.className}>
-        <BsSuitHeartFill />
-        <Space w='sm' />
-        <Text>{favourites.length}</Text>
-      </Button>
-    </Link>
+    // <Link to='/saved'>
+    <button color='orange' radius='md' className={props.className}>
+      <BsSuitHeartFill />
+      <Space w='sm' />
+      <Text>{favourites.length}</Text>
+    </button>
+    // </Link>
   )
 }
