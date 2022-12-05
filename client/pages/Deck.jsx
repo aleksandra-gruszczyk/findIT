@@ -35,7 +35,7 @@ export function CardStack() {
     if (!hasJobs) {
       return
     }
-    addToFavourites(jobs[i])
+    addToFavourites(jobs[i].id)
   }
 
   return (

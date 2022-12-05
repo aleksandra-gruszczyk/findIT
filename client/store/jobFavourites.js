@@ -2,12 +2,12 @@ import create from 'zustand'
 
 const useFavourites = create((set, get) => ({
   favourites: [],
-  addToFavourites: (job) => set((state) => (
-    { favourites: [...state.favourites, job] }
+  addToFavourites: (jobId) => set((state) => (
+    { favourites: [...state.favourites, jobId] }
   )),
   removeFromFavourites: (id) => {
-    const jobsToKeep = get().favourites.filter(job => {
-      return job.id !== id
+    const jobsToKeep = get().favourites.filter(jobId => {
+      return jobId !== id
     })
     set({favourites: jobsToKeep})
   }
