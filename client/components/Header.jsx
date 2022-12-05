@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import Logo from './Logo'
 
-export default function NavHeader() {
+export default function NavHeader({ children }) {
   return (
     <Box w='100%'>
       <Header
@@ -20,10 +20,7 @@ export default function NavHeader() {
             <Logo />
           </Link>
 
-          <Group>
-            <Button variant='default'>Log in</Button>
-            <Button>Sign up</Button>
-          </Group>
+          <Group>{children}</Group>
         </Group>
       </Header>
     </Box>
