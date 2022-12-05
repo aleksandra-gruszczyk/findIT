@@ -18,7 +18,6 @@ describe('get /api/v1/jobs', () => {
       Promise.resolve([
         {
           id: 0,
-
           company_name: 'Fingo',
           role: 'Java Developer',
           location: 'Auckland',
