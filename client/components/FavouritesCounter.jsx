@@ -10,9 +10,6 @@ export default function FavouritesCounter(props) {
     return
   }
 
-  // add something to favourites - button
-  // go to favourites - link
-  // buttons do stuff and links go places
   return (
     <Button
       component={Link}
