@@ -11,17 +11,22 @@ import {
 } from '@mantine/core'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 
-export function Front({ job, flipCard }) {
+import { RemoveButton } from './RemoveButton'
+
+export function Front({ job, flipCard, showRemove }) {
   return (
     <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
       <Card.Section>
         {/* <Image src={job.logo} /> */}
-        <Image
-          height={200}
-          src={null}
-          alt='With default placeholder'
-          withPlaceholder
-        />
+        <div css={styles.section}>
+          <Image
+            height={200}
+            src={null}
+            alt='With default placeholder'
+            withPlaceholder
+          />
+          {showRemove && <RemoveButton job={job} />}
+        </div>
       </Card.Section>
       {/* <Stack justify='space-between' align='flex-end' style={{ flexGrow: 1 }}> */}
       <div css={styles.stack}>
@@ -123,5 +128,15 @@ const styles = {
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+  `,
+
+  section: css`
+    position: relative;
+
+    .remove-btn {
+      position: absolute;
+      top: 0;
+      margin: 8px;
+    }
   `,
 }

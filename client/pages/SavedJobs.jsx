@@ -5,9 +5,12 @@ import useStoreJobFavourites from '@store/jobFavourites'
 export default function SavedJobs() {
   const favourites = useStoreJobFavourites((state) => state.favourites)
 
-  const savedJobs = favourites.map((favouriteJob) => (
-    <li key={favouriteJob.id}>
-      <JobCard job={favouriteJob} />
+  // Tack on the index because who knows why
+  // (but avoids a rendering bug with removals if same job id)
+  // Yet if all have the key 0, the problem doesn't happen :/
+  const savedJobs = favourites.map((favouriteJob, i) => (
+    <li key={favouriteJob.id + '-' + i}>
+      <JobCard job={favouriteJob} showRemove={true} />
     </li>
   ))
 
