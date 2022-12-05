@@ -30,7 +30,7 @@ export default function Filter() {
       />
 
       <MultiSelect
-        data={choices.skills}
+        data={choices.skills.map(({ skill }) => skill)}
         label='Your favorite frameworks/libraries'
         placeholder='Pick all that you like'
         searchable

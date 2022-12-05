@@ -51,8 +51,23 @@ async function includeSkills(job, db = connection) {
   }
 }
 
+export async function addNewJob(newJob, db = connection) {
+  const [job_id] = await db('jobs').insert(newJob.job)
+
+  await addSkills(newJob.skills, job_id)
+  return job_id
+}
+
+export function addSkills(skills, jobs_id, db = connection) {
+  const rows = skills.map((skills_id) => {
+    return { jobs_id, skills_id }
+  })
+  return db('jobs_skills').insert(rows)
+}
+
 export default {
   getJobs,
   getById,
   getAllRegions,
+  addNewJob,
 }
