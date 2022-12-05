@@ -7,7 +7,8 @@ import useStoreJobFavourites from '@store/jobFavourites'
 import useStoreJobs from '@store/jobs'
 import { useEffect } from 'react'
 
-import { TutorialCard } from '../components/Card/TutorialCard'
+import { TutorialCard } from '@components/Card/TutorialCard'
+
 
 export default function CardView() {
   const resetJobs = useStoreJobs((state) => state.resetJobs)
