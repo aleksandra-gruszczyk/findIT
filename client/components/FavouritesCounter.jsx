@@ -10,13 +10,21 @@ export default function FavouritesCounter(props) {
     return
   }
 
+  // add something to favourites - button
+  // go to favourites - link
+  // buttons do stuff and links go places
   return (
-    // <Link to='/saved'>
-    <button color='orange' radius='md' className={props.className}>
+    <Button
+      component={Link}
+      to='/saved'
+      color='orange'
+      radius='md'
+      className={props.className}
+      aria-label={`Go to favourites`}
+    >
       <BsSuitHeartFill />
       <Space w='sm' />
       <Text>{favourites.length}</Text>
-    </button>
-    // </Link>
+    </Button>
   )
 }

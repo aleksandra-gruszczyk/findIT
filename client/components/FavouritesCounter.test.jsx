@@ -1,31 +1,37 @@
-import '@testing-library/jest-dom'
-
 import FavouritesCounter from '@components/FavouritesCounter'
-import { Button, Text } from '@mantine/core'
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import { beforeEach, describe, it, vi } from 'vitest'
 
 import useFavourites from '../store/jobFavourites'
+
+vi.mock('../store/jobFavourites')
 
 describe('<FavouritesCounter/>', () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
 
-  vi.spyOn(useFavourites, 'addToFavourites', 'set').mockImplementation((fn) =>
-    fn({
-      favourites: [0, 1, 4],
-    })
-  )
-  it('should show the counter button', async () => {
-    render(<FavouritesCounter className={'test'} />)
-    // screen.debug()
-    const button = screen.getByRole('button')
-    expect(button).toBeInTheDocument()
+  useFavourites.mockReturnValue([1, 3, 4])
+  it('should show the counter button', () => {
+    render(<FavouritesCounter />, { wrapper: MemoryRouter })
+
+    const link = screen.getByRole('link', { name: /to favourites/i })
+    expect(link).toHaveTextContent(/3/i)
   })
-  // it('should increase the count when card is added to favourites', () => {
-  //   render(<FavouritesCounter />)
-  //   const count = screen.getByText('3')
-  //   expect(count).toBeInTheDocument()
-  // })
 })
+
+// test('restarting the gesture should book-keep offset and reset movement', () => {
+//   rerender(<Component gestures={['Drag']} />)
+//   fireEvent.pointerDown(screen.getByText('swipe'), { pointerId: 4, clientX: 10, clientY: 50, buttons: 1 })
+//   fireEvent.pointerMove(swipeCard, { pointerId: 4, clientX: 90, clientY: 120, buttons: 1 })
+
+// expect something here
+// })
+
+// fireEvent.pointerDown(screen.getByText('swipe'), {
+//   pointerId: 1,
+//   clientX: 10,
+//   clientY: 50,
+//   buttons: 1,
+// })
