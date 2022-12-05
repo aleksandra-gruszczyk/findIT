@@ -7,6 +7,9 @@ import useStoreJobFavourites from '@store/jobFavourites'
 import useStoreJobs from '@store/jobs'
 import { useEffect } from 'react'
 
+import { TutorialCard } from '@components/Card/TutorialCard'
+
+
 export default function CardView() {
   const resetJobs = useStoreJobs((state) => state.resetJobs)
   useEffect(resetJobs, [])
@@ -26,11 +29,21 @@ export function CardStack() {
   const addToFavourites = useStoreJobFavourites(
     (state) => state.addToFavourites
   )
-  const items = jobs.map((job) => <JobCard key={job.id} job={job} />)
+  const hasJobs = jobs.length > 0
+  const items = hasJobs
+    ? jobs.map((job) => <JobCard key={job.id} job={job} />)
+    : [<TutorialCard key='item' />]
+
+  const swipeRightHandler = (i) => {
+    if (!hasJobs) {
+      return
+    }
+    addToFavourites(jobs[i])
+  }
 
   return (
     <div>
-      <Utils.SwipeableStack onSwipeRight={(i) => addToFavourites(jobs[i])}>
+      <Utils.SwipeableStack onSwipeRight={swipeRightHandler}>
         {items}
       </Utils.SwipeableStack>
       <FavouritesCounter css={styles.favourites} />
