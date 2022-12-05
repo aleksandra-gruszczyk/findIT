@@ -2,7 +2,6 @@ import connection from '../connection.js'
 
 export function getAll(db = connection) {
   return db('skills').select('skill')
-  //.then(skills => skills.map(({skill}) => skill))
 }
 
 export function getSkillsForJobId(id, db = connection) {
