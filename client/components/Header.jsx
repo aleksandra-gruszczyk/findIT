@@ -1,7 +1,6 @@
+import { Logo } from '@components/Graphics'
 import { Box, Group, Header } from '@mantine/core'
 import { Link } from 'react-router-dom'
-
-import Logo from './Logo'
 
 export default function NavHeader({ children }) {
   return (

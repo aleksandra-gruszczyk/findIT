@@ -38,6 +38,7 @@
     "knex": "^2.1.0",
     "react-icons": "^4.7.1",
     "superagent": "^8.0.4",
+    "vite-plugin-svgr": "^2.2.2",
     "zustand": "^4.1.4"
   },
   "devDependencies": {
