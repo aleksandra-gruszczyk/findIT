@@ -34,7 +34,6 @@ describe('get /api/v1/jobs', () => {
     return request(server)
       .post('/api/v1/jobs')
       .then((res) => {
-        console.log(res.body)
         expect(res.body).toHaveLength(1)
       })
   })

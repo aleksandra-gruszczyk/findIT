@@ -28,14 +28,21 @@ export function CardStack() {
   const addToFavourites = useStoreJobFavourites(
     (state) => state.addToFavourites
   )
-  const items =
-    jobs.length > 0
-      ? jobs.map((job) => <JobCard key={job.id} job={job} />)
-      : [<TutorialCard key={0} />]
+  const hasJobs = jobs.length > 0
+  const items = hasJobs
+    ? jobs.map((job) => <JobCard key={job.id} job={job} />)
+    : [<TutorialCard key='item' />]
+
+  const swipeRightHandler = (i) => {
+    if (!hasJobs) {
+      return
+    }
+    addToFavourites(jobs[i])
+  }
 
   return (
     <div>
-      <Utils.SwipeableStack onSwipeRight={(i) => addToFavourites(jobs[i])}>
+      <Utils.SwipeableStack onSwipeRight={swipeRightHandler}>
         {items}
       </Utils.SwipeableStack>
       <FavouritesCounter css={styles.favourites} />
