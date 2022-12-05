@@ -22,13 +22,6 @@ export function TutorialCard() {
 }
 
 const styles = {
-  // Fades out byline text if it's too long (roughly 4 lines max):
-  byline: css`
-    max-height: 120px;
-    mask-image: linear-gradient(black, 90px, transparent);
-    overflow: hidden;
-  `,
-
   card: css`
     width: 350px;
     height: 450px;
@@ -43,12 +36,5 @@ const styles = {
 
     /* prevent text selection */
     user-select: none;
-  `,
-
-  stack: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-  `,
+  `
 }
