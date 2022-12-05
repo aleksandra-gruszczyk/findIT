@@ -1,5 +1,14 @@
 import { css } from '@emotion/react'
-import { Badge, Button, Card, Group, Image, Text, Title } from '@mantine/core'
+import {
+  Badge,
+  Button,
+  Card,
+  Group,
+  Image,
+  ScrollArea,
+  Text,
+  Title,
+} from '@mantine/core'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 
 export function Front({ job, flipCard }) {
@@ -56,9 +65,11 @@ export function Back({ job, flipCard }) {
               {job.role}
             </Title>
           </Group>
-          <Text size='sm' color='dimmed'>
-            {job.details}
-          </Text>
+          <ScrollArea style={{ height: 320 }}>
+            <Text size='sm' color='dimmed'>
+              {job.details}
+            </Text>
+          </ScrollArea>
         </div>
 
         <Group position='right'>
