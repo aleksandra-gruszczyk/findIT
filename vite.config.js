@@ -14,6 +14,12 @@ export default defineConfig({
     }),
     svgr()
   ],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './test/setup.js',
+    clearMocks: true,
+  },
   resolve: {
     alias: {
       '@assets': path.resolve(__dirname, './client/assets'),

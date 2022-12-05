@@ -11,12 +11,16 @@ export default function FavouritesCounter(props) {
   }
 
   return (
-    <Link to='/saved'>
-      <Button radius='md' className={props.className}>
-        <BsSuitHeartFill />
-        <Space w='sm' />
-        <Text>{favourites.length}</Text>
-      </Button>
-    </Link>
+    <Button
+      component={Link}
+      to='/saved'
+      radius='md'
+      className={props.className}
+      aria-label={`Go to favourites`}
+    >
+      <BsSuitHeartFill />
+      <Space w='sm' />
+      <Text>{favourites.length}</Text>
+    </Button>
   )
 }
