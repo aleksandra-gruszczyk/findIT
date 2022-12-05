@@ -1,14 +1,11 @@
 import { JobCard } from '@components/Card'
-import FavouritesCounter from '@components/FavouritesCounter'
+import { TutorialCard } from '@components/Card/TutorialCard'
 import FilterForm from '@components/FilterForm'
 import Utils from '@components/utils'
 import { css } from '@emotion/react'
 import useStoreJobFavourites from '@store/jobFavourites'
 import useStoreJobs from '@store/jobs'
 import { useEffect } from 'react'
-
-import { TutorialCard } from '@components/Card/TutorialCard'
-
 
 export default function CardView() {
   const resetJobs = useStoreJobs((state) => state.resetJobs)
@@ -42,12 +39,9 @@ export function CardStack() {
   }
 
   return (
-    <div>
-      <Utils.SwipeableStack onSwipeRight={swipeRightHandler}>
-        {items}
-      </Utils.SwipeableStack>
-      <FavouritesCounter css={styles.favourites} />
-    </div>
+    <Utils.SwipeableStack onSwipeRight={swipeRightHandler}>
+      {items}
+    </Utils.SwipeableStack>
   )
 }
 
@@ -59,13 +53,5 @@ const styles = {
     /* This element will be given any remaining space on the flex-axis */
     flex-grow: 1;
     background: lightblue;
-  `,
-
-  favourites: css`
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    margin: 8px;
   `,
 }

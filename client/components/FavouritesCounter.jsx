@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'
 export default function FavouritesCounter(props) {
   const favourites = useStoreJobFavourites((state) => state.favourites)
 
+  if (favourites.length < 1) {
+    return
+  }
+
   return (
     <Link to='/saved'>
       <Button color='orange' radius='md' className={props.className}>
