@@ -9,7 +9,6 @@ router.post('/', async (req, res) => {
 
   try {
     const jobs = await db.jobs.getJobs(filterQuery)
-    console.log(jobs)
     res.json(jobs)
   } catch (e) {
     console.error(e)

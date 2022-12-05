@@ -14,7 +14,11 @@ const to = (i) => ({
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 const trans = (r, s) => `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
-export default function SwipeableStack({ children, onSwipeRight }) {
+export default function SwipeableStack({
+  children,
+  onSwipeLeft,
+  onSwipeRight,
+}) {
   const [gone] = useState(() => new Set())
 
   const [springs, api] = useSprings(
@@ -31,12 +35,19 @@ export default function SwipeableStack({ children, onSwipeRight }) {
       args: [index],
       down,
       movement: [mx],
-      direction: [xDir],
+      currentTarget,
+      // direction: [xDir],
       velocity: [velocityX],
     }) => {
-      const trigger = velocityX > 0.2 // If you flick hard enough it should trigger the card to fly out
-      const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
+      const throwZone = Math.abs(mx) > currentTarget.offsetWidth / 2
+      const trigger = throwZone || velocityX > 0.2 // If you flick hard enough it should trigger the card to fly out
       if (!down && trigger) gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+      // const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
+
+      // Direction can change between left/right during drag
+      // it does not track left/right swipe from original card position,
+      // instead we use mx here to do that for determining left/right swipe:
+      const dir = mx < 0 ? -1 : 1
 
       api.start((i) => {
         if (index !== i) return // We're only interested in changing spring-data for the current spring
@@ -46,8 +57,15 @@ export default function SwipeableStack({ children, onSwipeRight }) {
         const rot = mx / 100 + (isGone ? dir * 10 * velocityX : 0) // How much the card tilts, flicking it harder makes it rotate faster
         const scale = down ? 1.1 : 1 // Active cards lift up a bit
 
-        if (isGone && dir === 1) {
-          onSwipeRight(i)
+        // Handle direction swiped provided the prop is valid:
+        if (isGone) {
+          if (onSwipeLeft && dir === -1) {
+            onSwipeLeft(i)
+          }
+
+          if (onSwipeRight && dir === 1) {
+            onSwipeRight(i)
+          }
         }
 
         return {

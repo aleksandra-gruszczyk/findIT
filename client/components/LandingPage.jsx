@@ -1,23 +1,28 @@
-import homepageimage from '@assets/homepage.png'
-import { css } from '@emotion/react'
+import { Homepage } from '@components/Graphics'
 import {
   Button,
   Flex,
   Group,
-  Image,
   List,
   MantineProvider,
   Text,
   ThemeIcon,
   Title,
 } from '@mantine/core'
+import { useMantineColorScheme } from '@mantine/core'
 import { BsPatchCheckFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
+import { getTheme } from '../theme'
 export default function LandingView() {
+  const { colorScheme } = useMantineColorScheme()
+
   return (
     <MantineProvider
       theme={{
+        ...getTheme(colorScheme),
+        // Nested MantineProvider to override the theme for
+        // all mantine components wrapped by the provider:
         fontSizes: { sm: 16 },
         fontFamily: 'Eb Garamond, serif',
         headings: { fontFamily: 'Eb Garamond, serif' },
@@ -37,7 +42,7 @@ export default function LandingView() {
           <BulletPoints />
           <ButtonStuff />
         </div>
-        <Image src={homepageimage} width={600} />
+        <Homepage width={600} />
       </Flex>
     </MantineProvider>
   )
@@ -63,7 +68,7 @@ function BulletPoints() {
       spacing='sm'
       size='sm'
       icon={
-        <ThemeIcon size={24} radius='xl' css={buttonColor}>
+        <ThemeIcon size={24} radius='xl'>
           <BsPatchCheckFill />
         </ThemeIcon>
       }
@@ -87,20 +92,12 @@ function ButtonStuff() {
 
   return (
     <Group mt={30}>
-      <Button
-        radius='xl'
-        color='orange'
-        onClick={() => navigate('/jobs/swipe')}
-      >
+      <Button radius='xl' onClick={() => navigate('/jobs/swipe')}>
         Get started
       </Button>
-      <Text variant='default' radius='xl' underline='true' color={'#071013'}>
+      <Text variant='default' radius='xl' underline='true'>
         Are you an employer?
       </Text>
     </Group>
   )
 }
-
-const buttonColor = css`
-  background-color: #ea7e1f;
-`

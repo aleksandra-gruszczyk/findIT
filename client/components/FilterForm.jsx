@@ -40,7 +40,7 @@ export default function Filter() {
         {...form.getInputProps('skills')}
       />
       <br />
-      <Button type='submit' color='orange' radius='md'>
+      <Button type='submit' radius='md'>
         findIT!
       </Button>
     </form>

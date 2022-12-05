@@ -17,7 +17,6 @@ export default function FavouritesCounter(props) {
     <Button
       component={Link}
       to='/saved'
-      color='orange'
       radius='md'
       className={props.className}
       aria-label={`Go to favourites`}
