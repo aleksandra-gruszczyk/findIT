@@ -48,6 +48,7 @@ export function CardStack() {
   )
 }
 
+// How to use the `css` prop from emotion:
 // const styles = {
 //   cardView: css`
 //     width: 100%;
@@ -59,6 +60,7 @@ export function CardStack() {
 //   `,
 // }
 
+// How to use the `styled` HoC from emotion:
 // Using styled API to make a component instead of using the `css` prop
 // can accept a function in `${}` to use the theme prop:
 const StyledCardView = styled.div`
@@ -70,6 +72,6 @@ const StyledCardView = styled.div`
   /* background: lightblue; */
   background-color: ${({ theme }) =>
     theme.colorScheme === 'dark'
-      ? theme.colors.dark[2]
-      : theme.colors.light[0]};
+      ? theme.colors.dark[7]
+      : theme.colors.customLight[7]};
 `

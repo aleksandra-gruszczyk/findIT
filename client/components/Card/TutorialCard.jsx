@@ -1,7 +1,6 @@
+import { Logo } from '@components/Graphics'
 import { css } from '@emotion/react'
 import { Card, Center, Text } from '@mantine/core'
-
-import Logo from '../Logo'
 
 export function TutorialCard() {
   return (
@@ -36,5 +35,5 @@ const styles = {
 
     /* prevent text selection */
     user-select: none;
-  `
+  `,
 }

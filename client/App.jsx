@@ -9,8 +9,8 @@ function App() {
   return (
     <main>
       <NavHeader>
-        <FavouritesCounter />
         <ThemeToggler />
+        <FavouritesCounter />
       </NavHeader>
       <Routes>
         <Route path='/' element={<Pages.Home />} />

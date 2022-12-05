@@ -1,10 +1,8 @@
-import homepageimage from '@assets/homepage.svg'
-import { css } from '@emotion/react'
+import { Homepage } from '@components/Graphics'
 import {
   Button,
   Flex,
   Group,
-  Image,
   List,
   MantineProvider,
   Text,
@@ -23,6 +21,8 @@ export default function LandingView() {
     <MantineProvider
       theme={{
         ...getTheme(colorScheme),
+        // Nested MantineProvider to override the theme for
+        // all mantine components wrapped by the provider:
         fontSizes: { sm: 16 },
         fontFamily: 'Eb Garamond, serif',
         headings: { fontFamily: 'Eb Garamond, serif' },
@@ -42,7 +42,7 @@ export default function LandingView() {
           <BulletPoints />
           <ButtonStuff />
         </div>
-        <Image src={homepageimage} width={600} />
+        <Homepage width={600} />
       </Flex>
     </MantineProvider>
   )
