@@ -9,11 +9,19 @@ export default function NavHeader({ children }) {
       <Header
         height={80}
         px='md'
-        style={{
-          // backgroundColor: '#2a2b3e',
-          // backgroundColor: 'rgb(59 65 91)',
-          backgroundColor: '#f6f6f6',
-        }}
+        // Without theme, manual inline styles:
+        // style={{
+        //   // backgroundColor: '#2a2b3e',
+        //   // backgroundColor: 'rgb(59 65 91)',
+        //   backgroundColor: '#f6f6f6',
+        // }}
+        // Theme override on mantine components:
+        sx={(theme) => ({
+          backgroundColor:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[8]
+              : theme.colors.light[1],
+        })}
       >
         <Group position='apart' sx={{ height: '100%' }}>
           <Link to='/'>

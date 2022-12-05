@@ -22,8 +22,6 @@ const layout = css`
 
     /* Centers items along the same axis across peers on that axis */
     align-items: center;
-    /* Always ensure some white-space is present at the end of the page */
-    /* padding-bottom: 48px; */
   }
 `
 
