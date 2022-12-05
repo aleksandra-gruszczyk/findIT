@@ -13,11 +13,11 @@ beforeEach(() => {
 })
 
 describe('get /api/v1/jobs', () => {
-  test('returns jobs once filtered', () => {
+  it('should return jobs filtered via request body', () => {
     db.getJobs.mockReturnValue(
       Promise.resolve([
         {
-          id: '0',
+          id: 0,
           company_name: 'Fingo',
           role: 'Java Developer',
           location: 'Auckland',
