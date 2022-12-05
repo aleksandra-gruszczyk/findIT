@@ -1,4 +1,4 @@
-export const theme = (colorScheme) => ({
+export const getTheme = (colorScheme) => ({
   colorScheme,
   colors: {
     dark: [
@@ -27,5 +27,7 @@ export const theme = (colorScheme) => ({
       '#001c08',
     ],
   },
-  primaryColor: 'light',
+  primaryColor: colorScheme,
+  fontFamily: 'Noto Sans',
+  headings: { fontFamily: 'Noto Sans' },
 })

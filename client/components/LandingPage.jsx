@@ -15,14 +15,14 @@ import { useMantineColorScheme } from '@mantine/core'
 import { BsPatchCheckFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
-import { theme } from '../theme'
+import { getTheme } from '../theme'
 export default function LandingView() {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
+  const { colorScheme } = useMantineColorScheme()
 
   return (
     <MantineProvider
       theme={{
-        ...theme(colorScheme),
+        ...getTheme(colorScheme),
         fontSizes: { sm: 16 },
         fontFamily: 'Eb Garamond, serif',
         headings: { fontFamily: 'Eb Garamond, serif' },
@@ -54,7 +54,7 @@ function Heading() {
 
 function IntroText() {
   return (
-    <Text mt='md'>
+    <Text color='dimmed' mt='md'>
       Tired of scrolling through long lists of paginated jobs to apply for? Try
       findIT!
     </Text>

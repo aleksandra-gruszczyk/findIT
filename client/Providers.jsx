@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import App from './App'
 import GlobalStyles from './GlobalStyles'
-import { theme } from './theme'
+import { getTheme } from './theme'
 
 function Provider() {
   const [colorScheme, setColorScheme] = useState('light')
@@ -19,7 +19,7 @@ function Provider() {
       <MantineProvider
         withNormalizeCSS
         withGlobalStyles
-        theme={theme(colorScheme)}
+        theme={getTheme(colorScheme)}
       >
         <GlobalStyles />
         <Router>

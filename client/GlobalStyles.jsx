@@ -1,5 +1,8 @@
 import { css, Global } from '@emotion/react'
 
+/*
+  Center the content horizontally and vertically:
+*/
 const layout = css`
   html {
     min-width: 320px;
@@ -16,6 +19,9 @@ const layout = css`
 
     display: flex;
     flex-direction: column;
+
+    /* Centers items along the same axis across peers on that axis */
+    align-items: center;
   }
 `
 
