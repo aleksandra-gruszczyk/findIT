@@ -17,7 +17,6 @@ export function Front({ job, flipCard, showRemove }) {
   return (
     <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
       <Card.Section>
-        {/* <Image src={job.logo} /> */}
         <div css={styles.section}>
           <Image
             height={200}
@@ -28,7 +27,6 @@ export function Front({ job, flipCard, showRemove }) {
           {showRemove && <RemoveButton job={job} />}
         </div>
       </Card.Section>
-      {/* <Stack justify='space-between' align='flex-end' style={{ flexGrow: 1 }}> */}
       <div css={styles.stack}>
         <div>
           <Group position='apart' mt='md' mb='xs'>
@@ -53,7 +51,6 @@ export function Front({ job, flipCard, showRemove }) {
             Tell me more!
           </Button>
         </Group>
-        {/* </Stack> */}
       </div>
     </Card>
   )
@@ -62,7 +59,6 @@ export function Front({ job, flipCard, showRemove }) {
 export function Back({ job, flipCard }) {
   return (
     <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
-      {/* <Stack justify='space-between' align='flex-end' style={{ flexGrow: 1 }}> */}
       <div css={styles.stack}>
         <div>
           <Group position='apart' mb='xs'>
@@ -93,7 +89,6 @@ export function Back({ job, flipCard }) {
             Back
           </Button>
         </Group>
-        {/* </Stack> */}
       </div>
     </Card>
   )

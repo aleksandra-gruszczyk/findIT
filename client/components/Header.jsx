@@ -10,9 +10,7 @@ export default function NavHeader({ children }) {
         height={80}
         px='md'
         style={{
-          // backgroundColor: '#2a2b3e',
-          // backgroundColor: 'rgb(59 65 91)',
-          backgroundColor: '#f6f6f6',
+          backgroundColor: 'primary',
         }}
       >
         <Group position='apart' sx={{ height: '100%' }}>

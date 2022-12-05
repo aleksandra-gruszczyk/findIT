@@ -9,12 +9,11 @@ export function RemoveButton({ job }) {
 
   return (
     <ActionIcon
-      color='grape'
       size='xl'
       radius='xl'
-      variant='filled'
       onClick={() => removeFromFavourites(job.id)}
       className='remove-btn'
+      color='primary'
     >
       <BsSuitHeartFill size={24} />
     </ActionIcon>
