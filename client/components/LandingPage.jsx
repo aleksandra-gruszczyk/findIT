@@ -33,7 +33,7 @@ export default function LandingView() {
       >
         <div>
           <Heading />
-          <IntroText />
+          <IntroText color='purple' />
           <BulletPoints />
           <ButtonStuff />
         </div>
@@ -49,7 +49,7 @@ function Heading() {
 
 function IntroText() {
   return (
-    <Text color='dimmed' mt='md'>
+    <Text mt='md'>
       Tired of scrolling through long lists of paginated jobs to apply for? Try
       findIT!
     </Text>
