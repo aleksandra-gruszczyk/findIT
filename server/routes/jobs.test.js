@@ -1,5 +1,5 @@
 import request from 'supertest'
-import { beforeEach, describe, expect, test, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import * as db from '../db/models/jobs'
 import server from '../server'
