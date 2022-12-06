@@ -19,14 +19,12 @@ export default function Filter() {
   function handleSubmit(values) {
     getJobs(values).then(setJobs)
   }
-  console.log(choices.skills)
 
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <Select
         label='Choose location'
         placeholder='Pick one'
-        clearable
         data={choices.regions}
         {...form.getInputProps('location')}
       />

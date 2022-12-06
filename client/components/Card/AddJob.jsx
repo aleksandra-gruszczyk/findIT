@@ -18,7 +18,7 @@ export default function AddJob() {
     },
     validate: {
       byline: (value) =>
-        value.length > 150 ? 'Byline can have at most 150 characters' : null,
+        value.length > 150 ? 'Byline is limited to a maximum of 150 characters' : null,
     },
   })
 
@@ -31,15 +31,14 @@ export default function AddJob() {
       autoClose: 3000,
       disallowClose: true,
     })
-    console.log(values)
     api
       .addJob({ ...values, company_name: 'Xero', logo: 'xero.png' })
       .then((job) => {
         updateNotification({
           id: 'add-job',
           color: 'teal',
-          title: 'Data was loaded',
-          message: `The offer for ${job.role} has been posted.`,
+          title: 'Job published',
+          message: `The offer for '${job.role}' has been posted!`,
           icon: <TbCheck size={16} />,
           // autoClose: 4000,
         })
@@ -62,7 +61,7 @@ export default function AddJob() {
       />
       <TextInput
         label='Byline'
-        placeholder='Provide short summary (max. 50 words)'
+        placeholder='Provide a short summary'
         {...addForm.getInputProps('byline')}
       />
       <Textarea
@@ -81,7 +80,6 @@ export default function AddJob() {
         searchable
         clearable
         nothingFound='Nothing found'
-        w={500}
         {...addForm.getInputProps('skills')}
       />
       <TextInput
