@@ -12,7 +12,7 @@ const server = express()
 server.use(express.json())
 // Required for form submission to support receiving data on `req.body`:
 server.use(express.urlencoded({ extended: false }))
-
+server.use('/assets', express.static(path.resolve('server/public')))
 
 // Routes:
 server.use('/api/v1', routes)

@@ -7,6 +7,7 @@ export const up = (knex) => {
     table.text('details').notNullable()
     table.string('byline').notNullable()
     table.string('logo').notNullable()
+    table.string('logo_bg').notNullable()
     table.string('apply_link').notNullable()
   })
 }

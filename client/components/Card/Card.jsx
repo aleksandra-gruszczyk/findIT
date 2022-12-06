@@ -4,26 +4,22 @@ import {
   Button,
   Card,
   Group,
-  Image,
   ScrollArea,
   Text,
   Title,
 } from '@mantine/core'
 import { HiOutlineExternalLink } from 'react-icons/hi'
 
+import JobLogo from './JobLogo'
 import { RemoveButton } from './RemoveButton'
 
 export function Front({ job, flipCard, showRemove }) {
+  console.log(job.details)
   return (
     <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
       <Card.Section>
         <div css={styles.section}>
-          <Image
-            height={200}
-            src={null}
-            alt='With default placeholder'
-            withPlaceholder
-          />
+          <JobLogo logo={{ url: job.logo, bg: job.logo_bg }} />
           {showRemove && <RemoveButton job={job} />}
         </div>
       </Card.Section>
@@ -67,7 +63,7 @@ export function Back({ job, flipCard }) {
             </Title>
           </Group>
           <ScrollArea style={{ height: 320 }}>
-            <Text size='sm' color='dimmed'>
+            <Text size='sm' color='dimmed' style={{ whiteSpace: 'pre-wrap' }}>
               {job.details}
             </Text>
           </ScrollArea>
