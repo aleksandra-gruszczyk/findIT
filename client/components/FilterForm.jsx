@@ -25,6 +25,7 @@ export default function Filter() {
       <Select
         label='Choose location'
         placeholder='Pick one'
+        clearable
         data={choices.regions}
         {...form.getInputProps('location')}
       />

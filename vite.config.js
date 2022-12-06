@@ -12,7 +12,7 @@ export default defineConfig({
         plugins: ['@emotion/babel-plugin'],
       },
     }),
-    svgr()
+    svgr(),
   ],
   test: {
     environment: 'jsdom',
@@ -26,6 +26,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './client/components'),
       '@pages': path.resolve(__dirname, './client/pages'),
       '@store': path.resolve(__dirname, './client/store'),
+      '@api': path.resolve(__dirname, './client/apis'),
     },
   },
   // Dev server proxy, does not apply to production build:

@@ -8,3 +8,17 @@ export function getJobs(queryFilter) {
       return res.body
     })
 }
+
+export function addJob(queryFilter) {
+  return request
+    .post(rootUrl + 'jobs/add')
+    .send(queryFilter)
+    .then((res) => {
+      return res.body
+    })
+}
+
+export default {
+  getJobs,
+  addJob,
+}
