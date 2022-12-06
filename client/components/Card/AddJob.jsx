@@ -16,10 +16,10 @@ export default function AddJob() {
       location: '',
       skills: [],
     },
-    // validate: {
-    //   Byline: (value) =>
-    //     value.length > 150 ? 'Byline can have at most 150 characters' : null,
-    // },
+    validate: {
+      byline: (value) =>
+        value.length > 150 ? 'Byline can have at most 150 characters' : null,
+    },
   })
 
   function handleSubmit(values) {
@@ -28,7 +28,7 @@ export default function AddJob() {
       loading: true,
       title: 'Posting your job',
       message: 'Your job offer is almost ready!',
-      autoClose: false,
+      autoClose: 3000,
       disallowClose: true,
     })
     console.log(values)
@@ -41,23 +41,41 @@ export default function AddJob() {
           title: 'Data was loaded',
           message: `The offer for ${job.role} has been posted.`,
           icon: <TbCheck size={16} />,
-          autoClose: 2000,
+          // autoClose: 4000,
         })
       })
   }
 
   return (
     <form onSubmit={addForm.onSubmit(handleSubmit)}>
-      <TextInput label='Role' placeholder='Role' withAsterisk />
-      <TextInput label='Location' placeholder='Location' withAsterisk />
+      <TextInput
+        label='Role'
+        placeholder='Role'
+        withAsterisk
+        {...addForm.getInputProps('role')}
+      />
+      <TextInput
+        label='Location'
+        placeholder='Location'
+        withAsterisk
+        {...addForm.getInputProps('location')}
+      />
       <TextInput
         label='Byline'
         placeholder='Provide short summary (max. 50 words)'
+        {...addForm.getInputProps('byline')}
       />
-      <Textarea label='Details' placeholder='In-depth job summary' />
+      <Textarea
+        label='Details'
+        placeholder='In-depth job summary'
+        {...addForm.getInputProps('details')}
+      />
 
       <MultiSelect
-        data={choices.skills.map(({ skill }) => skill)}
+        data={choices.skills.map(({ skill, id }) => ({
+          value: id,
+          label: skill,
+        }))}
         label='Your required frameworks/libraries'
         placeholder='Pick all that apply'
         searchable
@@ -69,6 +87,7 @@ export default function AddJob() {
       <TextInput
         label='Provide Link to Application'
         placeholder='Link to apply'
+        {...addForm.getInputProps('apply_link')}
       />
       <br />
       <Button type='submit' radius='md'>

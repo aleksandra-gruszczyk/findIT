@@ -19,6 +19,7 @@ export default function Filter() {
   function handleSubmit(values) {
     getJobs(values).then(setJobs)
   }
+  console.log(choices.skills)
 
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>

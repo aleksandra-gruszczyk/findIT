@@ -1,4 +1,5 @@
 import { ColorSchemeProvider, MantineProvider } from '@mantine/core'
+import { NotificationsProvider } from '@mantine/notifications'
 import { useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
@@ -21,10 +22,12 @@ function Provider() {
         withGlobalStyles
         theme={getTheme(colorScheme)}
       >
-        <GlobalStyles />
-        <Router>
-          <App />
-        </Router>
+        <NotificationsProvider>
+          <GlobalStyles />
+          <Router>
+            <App />
+          </Router>
+        </NotificationsProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   )

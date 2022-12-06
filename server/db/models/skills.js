@@ -1,7 +1,7 @@
 import connection from '../connection.js'
 
 export function getAll(db = connection) {
-  return db('skills').select('skill')
+  return db('skills').select('skill', 'id')
 }
 
 export function getSkillsForJobId(id, db = connection) {
