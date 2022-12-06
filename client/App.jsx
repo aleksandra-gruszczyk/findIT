@@ -16,6 +16,7 @@ function App() {
         <Route path='/' element={<Pages.Home />} />
         <Route path='/saved' element={<Pages.SavedJobs />} />
         <Route path='/jobs/swipe' element={<Pages.Deck />} />
+        <Route path='/add' element={<Pages.Employer />} />
       </Routes>
     </main>
   )

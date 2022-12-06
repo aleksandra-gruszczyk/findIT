@@ -95,7 +95,12 @@ function ButtonStuff() {
       <Button radius='xl' onClick={() => navigate('/jobs/swipe')}>
         Get started
       </Button>
-      <Text variant='default' radius='xl' underline='true'>
+      <Text
+        variant='default'
+        radius='xl'
+        underline='true'
+        onClick={() => navigate('/add')}
+      >
         Are you an employer?
       </Text>
     </Group>

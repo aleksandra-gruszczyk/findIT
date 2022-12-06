@@ -1,7 +1,6 @@
 // https://mantine.dev/theming/theme-object/#usage
-export const getTheme = (colorScheme = 'light') => (
+export const getTheme = (colorScheme = 'light') =>
   colorScheme === 'light' ? lightTheme : darkTheme
-)
 
 // Common base styles that both themes can inherit,
 // and then override if needed:
@@ -42,9 +41,9 @@ const lightTheme = {
   other: {
     logo: {
       text: '#ff743f',
-      symbol: "#0e87f9",
-    }
-  }
+      symbol: '#0e87f9',
+    },
+  },
 }
 
 const darkTheme = {
@@ -77,8 +76,8 @@ const darkTheme = {
   // Let's change our logo svg colours for dark mode!
   other: {
     logo: {
-      text: '#00843f',
-      symbol: "#fe87f9",
-    }
-  }
+      text: 'cyan',
+      symbol: '#fe87f9',
+    },
+  },
 }
