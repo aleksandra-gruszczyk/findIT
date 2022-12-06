@@ -69,7 +69,7 @@ function BulletPoints() {
       size='sm'
       icon={
         <ThemeIcon size={24} radius='xl'>
-          <BsPatchCheckFill />
+          <BsPatchCheckFill color='white' />
         </ThemeIcon>
       }
     >
