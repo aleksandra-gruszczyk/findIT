@@ -75,11 +75,11 @@ const darkTheme = {
       '#1f000f',
     ],
   },
-  components: {
-    MultiSelect: {
-      defaultValueLabel: { backgroundColor: 'hotpink' },
-    },
-  },
+  //components: {
+  //  MultiSelect: {
+  //    defaultValueLabel: { backgroundColor: 'hotpink' },
+  //  },
+  //},
   // Let's change our logo svg colours for dark mode!
   other: {
     logo: {

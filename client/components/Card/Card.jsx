@@ -39,7 +39,7 @@ export function Front({ job, flipCard, showRemove }) {
           </Text>
         </div>
         <Group position='right'>
-          <Button mt='md' radius='md' onClick={flipCard}>
+          <Button variant='light' mt='md' radius='md' onClick={flipCard}>
             Tell me more!
           </Button>
         </Group>
@@ -75,7 +75,7 @@ export function Back({ job, flipCard }) {
             Apply
           </Button>
 
-          <Button radius='md' onClick={flipCard}>
+          <Button variant='light' radius='md' onClick={flipCard}>
             Back
           </Button>
         </Group>
