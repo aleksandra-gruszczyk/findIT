@@ -24,7 +24,7 @@ const lightTheme = {
   // https://mantine.dev/theming/theme-object/#colors
   colors: {
     customLight: [
-      '#C49DB3',
+      '#363B6E',
       '#F6F3E8',
       '#E7C7B4',
       '#F7DEC0',
@@ -34,6 +34,24 @@ const lightTheme = {
       '#115D81', //button color on the landing page
       '#495791',
     ],
+  },
+  components: {
+    MultiSelect: {
+      defaultProps: {
+        styles: (theme) => {
+          return {
+            // Better vertical centering of the values in the input field
+            values: {
+              alignContent: 'center'
+            },
+            // Badge/Chip colour of selected values:
+            value: {
+              backgroundColor: theme.colors.customLight[3],
+            },
+          }
+        }
+      }
+    }
   },
   // You can add your own extra theme styles to reference on
   // a theme object by adding them to this `other` key:
@@ -74,11 +92,28 @@ const darkTheme = {
       '#1f000f',
     ],
   },
-  //components: {
-  //  MultiSelect: {
-  //    defaultValueLabel: { backgroundColor: 'hotpink' },
-  //  },
-  //},
+  components: {
+    MultiSelect: {
+      defaultProps: {
+        styles: (theme) => {
+          return {
+            // Better vertical centering of the values in the input field
+            values: {
+              alignContent: 'center'
+            },
+            // Badge/Chip colour of selected values:
+            value: {
+              backgroundColor: theme.colors.hotpink[5],
+            },
+            // Badge/Chip label text colour:
+            defaultValueLabel: {
+              color: theme.colors.hotpink[0]
+            }
+          }
+        }
+      }
+    }
+  },
   // Let's change our logo svg colours for dark mode!
   other: {
     logo: {

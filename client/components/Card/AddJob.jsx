@@ -1,5 +1,11 @@
 import api from '@api/jobs'
-import { Button, MultiSelect, Textarea, TextInput } from '@mantine/core'
+import {
+  Button,
+  Container,
+  MultiSelect,
+  Textarea,
+  TextInput,
+} from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { showNotification, updateNotification } from '@mantine/notifications'
 import useStoreJobFilters from '@store/jobFilters'
@@ -18,7 +24,9 @@ export default function AddJob() {
     },
     validate: {
       byline: (value) =>
-        value.length > 150 ? 'Byline is limited to a maximum of 150 characters' : null,
+        value.length > 150
+          ? 'Byline is limited to a maximum of 150 characters'
+          : null,
     },
   })
 
@@ -46,51 +54,53 @@ export default function AddJob() {
   }
 
   return (
-    <form onSubmit={addForm.onSubmit(handleSubmit)}>
-      <TextInput
-        label='Role'
-        placeholder='Role'
-        withAsterisk
-        {...addForm.getInputProps('role')}
-      />
-      <TextInput
-        label='Location'
-        placeholder='Location'
-        withAsterisk
-        {...addForm.getInputProps('location')}
-      />
-      <TextInput
-        label='Byline'
-        placeholder='Provide a short summary'
-        {...addForm.getInputProps('byline')}
-      />
-      <Textarea
-        label='Details'
-        placeholder='In-depth job summary'
-        {...addForm.getInputProps('details')}
-      />
+    <Container style={{ width: 500 }}>
+      <form onSubmit={addForm.onSubmit(handleSubmit)}>
+        <TextInput
+          label='Role'
+          placeholder='Role'
+          withAsterisk
+          {...addForm.getInputProps('role')}
+        />
+        <TextInput
+          label='Location'
+          placeholder='Location'
+          withAsterisk
+          {...addForm.getInputProps('location')}
+        />
+        <TextInput
+          label='Byline'
+          placeholder='Provide a short summary'
+          {...addForm.getInputProps('byline')}
+        />
+        <Textarea
+          label='Details'
+          placeholder='In-depth job summary'
+          {...addForm.getInputProps('details')}
+        />
 
-      <MultiSelect
-        data={choices.skills.map(({ skill, id }) => ({
-          value: id,
-          label: skill,
-        }))}
-        label='Your required frameworks/libraries'
-        placeholder='Pick all that apply'
-        searchable
-        clearable
-        nothingFound='Nothing found'
-        {...addForm.getInputProps('skills')}
-      />
-      <TextInput
-        label='Provide Link to Application'
-        placeholder='Link to apply'
-        {...addForm.getInputProps('apply_link')}
-      />
-      <br />
-      <Button type='submit' radius='md'>
-        submitIT!
-      </Button>
-    </form>
+        <MultiSelect
+          data={choices.skills.map(({ skill, id }) => ({
+            value: id,
+            label: skill,
+          }))}
+          label='Your required frameworks/libraries'
+          placeholder='Pick all that apply'
+          searchable
+          clearable
+          nothingFound='Nothing found'
+          {...addForm.getInputProps('skills')}
+        />
+        <TextInput
+          label='Provide Link to Application'
+          placeholder='Link to apply'
+          {...addForm.getInputProps('apply_link')}
+        />
+        <br />
+        <Button type='submit' radius='md'>
+          submitIT!
+        </Button>
+      </form>
+    </Container>
   )
 }
