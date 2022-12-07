@@ -2,6 +2,8 @@ import { Logo } from '@components/Graphics'
 import { Box, Group, Header } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
+import XeroHeader from './XeroHeader'
+
 export default function NavHeader({ children }) {
   return (
     <Box w='100%'>
@@ -28,7 +30,7 @@ export default function NavHeader({ children }) {
           <Link to='/'>
             <Logo />
           </Link>
-
+          <XeroHeader />
           <Group>{children}</Group>
         </Group>
       </Header>
