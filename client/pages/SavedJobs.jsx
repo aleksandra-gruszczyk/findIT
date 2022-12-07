@@ -18,12 +18,10 @@ export default function SavedJobs() {
   ))
 
   return (
-    <>
       <Flex>
         <ul css={grid}>{savedJobs}</ul>
         <FavouritesPage width={600} />
       </Flex>
-    </>
   )
 }
 

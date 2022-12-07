@@ -4,7 +4,6 @@ import {
   Button,
   Card,
   Group,
-  Image,
   ScrollArea,
   Text,
   Title,

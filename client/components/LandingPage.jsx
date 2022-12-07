@@ -1,4 +1,5 @@
-import { FavouritesPage, Homepage } from '@components/Graphics'
+import { Homepage } from '@components/Graphics'
+
 import {
   Button,
   Flex,
