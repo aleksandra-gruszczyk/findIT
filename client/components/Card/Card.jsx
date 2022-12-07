@@ -14,7 +14,6 @@ import JobLogo from './JobLogo'
 import { RemoveButton } from './RemoveButton'
 
 export function Front({ job, flipCard, showRemove }) {
-  console.log(job.details)
   return (
     <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
       <Card.Section>
