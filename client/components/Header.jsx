@@ -21,7 +21,7 @@ export default function NavHeader({ children }) {
           backgroundColor:
             theme.colorScheme === 'dark'
               ? theme.colors.dark[8]
-              : theme.colors.customLight[0],
+              : theme.colors.customLight[5],
         })}
       >
         <Group position='apart' sx={{ height: '100%' }}>
