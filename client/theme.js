@@ -72,7 +72,7 @@ const darkTheme = {
   // https://mantine.dev/theming/theme-object/#colors
   // https://mantine.dev/theming/colors/
   white: '#ffe2f4', // seems to be used for some elements color style in dark scheme
-  black: 'green', // Seems ignored in dark scheme?
+  black: '#800040', // Seems ignored in dark scheme?
   colors: {
     // https://mantine.dev/guides/dark-theme/#colors
     // Some mantine components are hard-coded to use the `dark` color in dark scheme,
