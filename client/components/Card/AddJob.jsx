@@ -18,7 +18,9 @@ export default function AddJob() {
     },
     validate: {
       byline: (value) =>
-        value.length > 150 ? 'Byline is limited to a maximum of 150 characters' : null,
+        value.length > 150
+          ? 'Byline is limited to a maximum of 150 characters'
+          : null,
     },
   })
 
@@ -32,11 +34,16 @@ export default function AddJob() {
       disallowClose: true,
     })
     api
-      .addJob({ ...values, company_name: 'Xero', logo: 'xero.png' })
+      .addJob({
+        ...values,
+        company_name: 'Xero',
+        logo: 'xero.png',
+        logo_bg: 'black',
+      })
       .then((job) => {
         updateNotification({
           id: 'add-job',
-          color: 'teal',
+          color: '#115D81',
           title: 'Job published',
           message: `The offer for '${job.role}' has been posted!`,
           icon: <TbCheck size={16} />,
