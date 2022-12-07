@@ -38,3 +38,29 @@ describe('get /api/v1/jobs', () => {
       })
   })
 })
+
+describe('post /api/v1/jobs/add', () => {
+  it('should send a new job data', () => {
+    db.addNewJob.mockImplementation(
+      Promise.resolve([
+        {
+          company_name: 'Fingo',
+          role: 'Java Developer',
+          location: 'Auckland',
+          details: 'something something',
+          byline:
+            'In this role, you will be assisting application support, reporting writing as well as business analysis to support the organisation.',
+          logo: 'image.png',
+          logo_bg: 'black',
+          apply_link: 'https://www.seek.co.nz/job/5935695656',
+          skills: ['Squeal', 'CHush'],
+        },
+      ])
+    )
+    return request(server)
+      .post('/api/v1/jobs/add')
+      .then((res) => {
+        expect(res.status).toBe(500)
+      })
+  })
+})

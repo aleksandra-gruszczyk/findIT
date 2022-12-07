@@ -25,6 +25,7 @@ router.post('/add', async (req, res) => {
       location: job.location,
       byline: job.byline,
       logo: job.logo,
+      logo_bg: job.logo_bg,
       details: job.details,
       apply_link: job.apply_link,
     },

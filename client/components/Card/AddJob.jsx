@@ -40,11 +40,16 @@ export default function AddJob() {
       disallowClose: true,
     })
     api
-      .addJob({ ...values, company_name: 'Xero', logo: 'xero.png' })
+      .addJob({
+        ...values,
+        company_name: 'Xero',
+        logo: 'xero.png',
+        logo_bg: 'black',
+      })
       .then((job) => {
         updateNotification({
           id: 'add-job',
-          color: 'teal',
+          color: '#115D81',
           title: 'Job published',
           message: `The offer for '${job.role}' has been posted!`,
           icon: <TbCheck size={16} />,
