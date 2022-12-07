@@ -66,6 +66,7 @@ export function Back({ job, flipCard }) {
             href={job.apply_link}
             radius='md'
             leftIcon={<HiOutlineExternalLink size={14} />}
+            target='_blank'
           >
             Apply
           </Button>
