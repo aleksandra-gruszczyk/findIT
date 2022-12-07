@@ -13,6 +13,8 @@ function App() {
       header={<NavBar />}
       styles={(theme) => ({
         main: {
+          paddingLeft: 0,
+          paddingRight: 0,
           minHeight: 'max(850px, 100vh)',
           backgroundColor:
             theme.colorScheme === 'dark'
