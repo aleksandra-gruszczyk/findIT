@@ -9,7 +9,6 @@ import {
 } from '@mantine/core'
 import { useState } from 'react'
 import { BsChevronDown } from 'react-icons/bs'
-import { TbLogout } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
 
 export default function XeroHeader() {
@@ -53,8 +52,16 @@ function UserMenu({ logout }) {
               alt='xero'
               radius='xl'
               size={40}
+              // style={{
+              //   border: '2px solid #eee',
+              // }}
             />
-            <Text weight={500} size='lg' sx={{ lineHeight: 1 }} mr={3}>
+            <Text
+              weight={500}
+              size='lg'
+              sx={{ paddingLeft: 4, lineHeight: 1 }}
+              mr={3}
+            >
               Xero
             </Text>
             <BsChevronDown size={12} stroke={1.5} />
@@ -62,36 +69,44 @@ function UserMenu({ logout }) {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item onClick={() => navigate('/add')}>Add Job Entry</Menu.Item>
-        <Menu.Item onClick={handleLogout}>Logout</Menu.Item>
+        <Menu.Item onClick={() => navigate('/add')}>Post a role</Menu.Item>
+        <Menu.Item onClick={handleLogout}>Log out</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   )
 }
 
-const useStyles = createStyles((theme) => ({
-  user: {
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-    padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
-    borderRadius: theme.radius.sm,
-    transition: 'background-color 100ms ease',
+const useStyles = createStyles((theme) => {
+  const hoverStyles = {
+    color: theme.colorScheme === 'dark' ? theme.colors.hotpink[0] : theme.black,
     backgroundColor:
       theme.colorScheme === 'dark'
-        ? theme.colors.dark[8]
-        : theme.colors.customLight[4],
+        ? theme.colors.hotpink[4]
+        : theme.colors.customLight[1],
+  }
 
-    '&:hover': {
+  return {
+    user: {
+      color:
+        theme.colorScheme === 'dark' ? theme.colors.hotpink[0] : theme.white,
+      padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
+      borderRadius: theme.radius.sm,
+      transition: 'background-color 100ms ease',
       backgroundColor:
-        theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+        theme.colorScheme === 'dark'
+          ? theme.colors.hotpink[3]
+          : theme.fn.primaryColor(),
+      // backgroundColor: theme.colorScheme === 'dark'
+      //   ? theme.colors.dark[8]
+      //   : theme.colors.customLight[4],
+
+      '&:hover': hoverStyles,
+
+      [theme.fn.smallerThan('xs')]: {
+        display: 'none',
+      },
     },
 
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
-    },
-  },
-
-  userActive: {
-    backgroundColor:
-      theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
-  },
-}))
+    userActive: hoverStyles,
+  }
+})

@@ -7,8 +7,10 @@ export default function ThemeToggler() {
 
   return (
     <ActionIcon
-      // variant='filled'
-      // color='primary'
+      variant='filled'
+      color='primary'
+      size='lg'
+      radius='sm'
       sx={(theme) => {
         return {
           // An explicit color and shade:
@@ -18,7 +20,7 @@ export default function ThemeToggler() {
           // But you could swap out the 2nd index for a different shade index
           // of that colour you want to use:
           // backgroundColor: theme.colors[theme.primaryColor][theme.fn.primaryShade()]
-          backgroundColor: theme.colors[theme.primaryColor][4],
+          // backgroundColor: theme.colors[theme.primaryColor][3],
           // If you need to change the icon colour:
           // color: theme.colors[theme.primaryColor][1],
           // Remember you can also use regular CSS values too:
@@ -26,6 +28,11 @@ export default function ThemeToggler() {
           // color: '#12ab42',
           // And you can conditionally use different colours based on theme:
           // color: dark ? 'hotpink' : theme.colors.customLight[4]
+          //
+          // These are the defaults shades for our current themes:
+          // backgroundColor: dark
+          //   ? theme.colors[theme.primaryColor][3]
+          //   : theme.colors.customLight[6],
         }
       }}
       onClick={() => toggleColorScheme()}

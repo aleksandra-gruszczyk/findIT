@@ -13,7 +13,7 @@ function App() {
       header={<NavBar />}
       styles={(theme) => ({
         main: {
-          minHeight: 'max(800px, 100vh)',
+          minHeight: 'max(850px, 100vh)',
           backgroundColor:
             theme.colorScheme === 'dark'
               ? theme.colors.dark[7]
@@ -33,8 +33,8 @@ function App() {
 function NavBar() {
   return (
     <NavHeader>
-      <ThemeToggler />
       <FavouritesCounter />
+      <ThemeToggler />
       <XeroHeader />
     </NavHeader>
   )
