@@ -41,6 +41,7 @@ export default function AddJob() {
         logo_bg: 'black',
       })
       .then((job) => {
+        addForm.reset()
         updateNotification({
           id: 'add-job',
           color: '#115D81',
@@ -58,12 +59,14 @@ export default function AddJob() {
         label='Role'
         placeholder='Role'
         withAsterisk
+        required
         {...addForm.getInputProps('role')}
       />
       <TextInput
         label='Location'
         placeholder='Location'
         withAsterisk
+        required
         {...addForm.getInputProps('location')}
       />
       <TextInput
