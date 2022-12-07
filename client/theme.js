@@ -35,6 +35,24 @@ const lightTheme = {
       '#495791',
     ],
   },
+  components: {
+    MultiSelect: {
+      defaultProps: {
+        styles: (theme) => {
+          return {
+            // Better vertical centering of the values in the input field
+            values: {
+              alignContent: 'center'
+            },
+            // Badge/Chip colour of selected values:
+            value: {
+              backgroundColor: theme.colors.customLight[3],
+            },
+          }
+        }
+      }
+    }
+  },
   // You can add your own extra theme styles to reference on
   // a theme object by adding them to this `other` key:
   other: {
@@ -74,11 +92,28 @@ const darkTheme = {
       '#1f000f',
     ],
   },
-  //components: {
-  //  MultiSelect: {
-  //    defaultValueLabel: { backgroundColor: 'hotpink' },
-  //  },
-  //},
+  components: {
+    MultiSelect: {
+      defaultProps: {
+        styles: (theme) => {
+          return {
+            // Better vertical centering of the values in the input field
+            values: {
+              alignContent: 'center'
+            },
+            // Badge/Chip colour of selected values:
+            value: {
+              backgroundColor: theme.colors.hotpink[5],
+            },
+            // Badge/Chip label text colour:
+            defaultValueLabel: {
+              color: theme.colors.hotpink[0]
+            }
+          }
+        }
+      }
+    }
+  },
   // Let's change our logo svg colours for dark mode!
   other: {
     logo: {
