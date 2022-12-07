@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Button,
   createStyles,
   Group,
   Menu,
@@ -9,13 +10,34 @@ import {
 import { useState } from 'react'
 import { BsChevronDown } from 'react-icons/bs'
 import { TbLogout } from 'react-icons/tb'
+import { useNavigate } from 'react-router-dom'
 
 export default function XeroHeader() {
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  function login() {
+    setLoggedIn(!loggedIn)
+  }
+  return loggedIn ? (
+    <UserMenu logout={login} />
+  ) : (
+    <Button onClick={login}>Log in</Button>
+  )
+}
+
+function UserMenu({ logout }) {
   const { classes, cx } = useStyles()
   const [userMenuOpened, setUserMenuOpened] = useState(false)
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    logout()
+    navigate('/')
+  }
+
   return (
     <Menu
-      width={260}
+      width={130}
       position='bottom-end'
       transition='pop-top-right'
       onClose={() => setUserMenuOpened(false)}
@@ -27,7 +49,7 @@ export default function XeroHeader() {
         >
           <Group spacing={7}>
             <Avatar
-              src='assets/logo/xero.svg'
+              src='/assets/logo/xero.svg'
               alt='xero'
               radius='xl'
               size={40}
@@ -40,8 +62,8 @@ export default function XeroHeader() {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item>Add Job Entry</Menu.Item>
-        <Menu.Item icon={<TbLogout size={14} stroke={1.5} />}>Logout</Menu.Item>
+        <Menu.Item onClick={() => navigate('/add')}>Add Job Entry</Menu.Item>
+        <Menu.Item onClick={handleLogout}>Logout</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   )
@@ -53,6 +75,10 @@ const useStyles = createStyles((theme) => ({
     padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
     borderRadius: theme.radius.sm,
     transition: 'background-color 100ms ease',
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[8]
+        : theme.colors.customLight[4],
 
     '&:hover': {
       backgroundColor:

@@ -30,7 +30,6 @@ export default function NavHeader({ children }) {
           <Link to='/'>
             <Logo />
           </Link>
-          <XeroHeader />
           <Group>{children}</Group>
         </Group>
       </Header>

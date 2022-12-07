@@ -4,6 +4,7 @@ import ThemeToggler from '@components/utils/ThemeToggler'
 import { AppShell } from '@mantine/core'
 import { Route, Routes } from 'react-router-dom'
 
+import XeroHeader from './components/XeroHeader'
 import Pages from './pages'
 
 function App() {
@@ -33,6 +34,7 @@ function NavBar() {
     <NavHeader>
       <ThemeToggler />
       <FavouritesCounter />
+      <XeroHeader />
     </NavHeader>
   )
 }
