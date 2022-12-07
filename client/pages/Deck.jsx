@@ -70,8 +70,4 @@ const StyledCardView = styled.div`
   /* This element will be given any remaining space on the flex-axis */
   flex-grow: 1;
   /* background: lightblue; */
-  background-color: ${({ theme }) =>
-    theme.colorScheme === 'dark'
-      ? theme.colors.dark[7]
-      : theme.colors.customLight[7]};
 `

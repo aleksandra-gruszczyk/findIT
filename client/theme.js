@@ -18,30 +18,29 @@ const lightTheme = {
   primaryColor: 'customLight',
   // These two (white and black) are not referencing theme color shades,
   // but specific CSS color values directly:
-  // white: 'gold', // used for various component backgrounds with light scheme
-  // black: 'purple', // used for text with light scheme
+  //white: '#F0EBD8', // used for various component backgrounds with light scheme
+  black: '#363B6E', // used for text with light scheme
   // https://mantine.dev/theming/colors/
   // https://mantine.dev/theming/theme-object/#colors
   colors: {
     customLight: [
-      '#dafff0',
-      '#adffd8',
-      '#7cffc1',
-      '#4affa8',
-      '#1aff91',
-      '#00e678',
-      '#00b35c',
-      '#008041',
-      '#004e26',
-      '#001c08',
+      '#C49DB3',
+      '#F6F3E8',
+      '#E7C7B4',
+      '#F7DEC0',
+      '#F0EBD8',
+      '#50B0C8',
+      '#2C95B5',
+      '#115D81', //button color on the landing page
+      '#495791',
     ],
   },
   // You can add your own extra theme styles to reference on
   // a theme object by adding them to this `other` key:
   other: {
     logo: {
-      text: '#ff743f',
-      symbol: '#0e87f9',
+      text: '#495791',
+      symbol: '#F7DEC0',
     },
   },
 }

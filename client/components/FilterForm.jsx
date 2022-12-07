@@ -38,6 +38,7 @@ export default function Filter() {
         clearable
         nothingFound='Nothing found'
         w={500}
+        color='white'
         {...form.getInputProps('skills')}
       />
       <br />
