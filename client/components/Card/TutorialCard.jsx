@@ -1,19 +1,38 @@
 import { Logo } from '@components/Graphics'
 import { css } from '@emotion/react'
-import { Card, Center, Text } from '@mantine/core'
+import { Card, Center, Text, useMantineTheme } from '@mantine/core'
 
 export function TutorialCard() {
+  const theme = useMantineTheme()
+
+  const cardBG = theme.colors[theme.primaryColor][2]
+  const cardBorder = theme.colors[theme.primaryColor][3]
+
   return (
-    <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
+    <Card
+      shadow='sm'
+      p='lg'
+      radius='md'
+      withBorder
+      css={styles.card}
+      style={{ backgroundColor: cardBG, border: `10px solid ${cardBorder}` }}
+    >
       <Card.Section>
         <Center style={{ width: '100%', height: 200 }}>
-          <Logo monochrome />
+          <Logo monochrome={theme.black} />
         </Center>
       </Card.Section>
-      <div>
-        <Text size='lg'>
-          Swipe right to add the card to your favourites, swipe left if you are
-          not interested in the job!
+      <div
+        style={{
+          color: theme.black,
+          whiteSpace: 'pre-wrap',
+          margin: '0 auto',
+        }}
+      >
+        <Text size='xl'>
+          <b>Swipe left</b> to forget a role.
+          {'\n'}
+          <b>Swipe right</b> for keen as!
         </Text>
       </div>
     </Card>
@@ -30,14 +49,11 @@ const styles = {
     flex-direction: column;
 
     /* card corners and shadow */
-    border-radius: 12px;
+    /* border-radius: 12px; */
+    border-radius: 22px;
     box-shadow: 0 12px 12px rgb(0 0 0 / 12%);
 
     /* prevent text selection */
     user-select: none;
-
-    background-color: #f7dec0;
-    border: 10px solid white;
-    border-radius: 22px;
   `,
 }

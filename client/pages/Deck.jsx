@@ -1,6 +1,7 @@
 import { JobCard } from '@components/Card'
 import { TutorialCard } from '@components/Card/TutorialCard'
 import FilterForm from '@components/FilterForm'
+import { Arrow } from '@components/Graphics/Arrow'
 import Utils from '@components/utils'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
@@ -40,9 +41,13 @@ export function CardStack() {
   }
 
   return (
-    <Utils.SwipeableStack onSwipeRight={swipeRightHandler}>
-      {items}
-    </Utils.SwipeableStack>
+    <>
+      <Arrow direction='left' />
+      <Arrow direction='right' />
+      <Utils.SwipeableStack onSwipeRight={swipeRightHandler}>
+        {items}
+      </Utils.SwipeableStack>
+    </>
   )
 }
 
