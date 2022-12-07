@@ -26,9 +26,7 @@ export function Front({ job, flipCard, showRemove }) {
         <div>
           <Group position='apart' mt='md' mb='xs'>
             <Text weight={500}>{job.company_name}</Text>
-            <Badge color='orange' variant='light'>
-              {job.location}
-            </Badge>
+            <Badge>{job.location}</Badge>
           </Group>
           <Text size='sm'>{job.role}</Text>
           <Text size='sm' color='dimmed' css={styles.byline}>
@@ -36,13 +34,7 @@ export function Front({ job, flipCard, showRemove }) {
           </Text>
         </div>
         <Group position='right'>
-          <Button
-            variant='light'
-            color='blue'
-            mt='md'
-            radius='md'
-            onClick={flipCard}
-          >
+          <Button variant='light' mt='md' radius='md' onClick={flipCard}>
             Tell me more!
           </Button>
         </Group>
@@ -72,15 +64,13 @@ export function Back({ job, flipCard }) {
           <Button
             component='a'
             href={job.apply_link}
-            variant='light'
-            color='blue'
             radius='md'
             leftIcon={<HiOutlineExternalLink size={14} />}
           >
             Apply
           </Button>
 
-          <Button variant='light' color='blue' radius='md' onClick={flipCard}>
+          <Button variant='light' radius='md' onClick={flipCard}>
             Back
           </Button>
         </Group>

@@ -50,34 +50,41 @@ const darkTheme = {
   ...baseTheme,
   // https://mantine.dev/theming/theme-object/#colorscheme
   colorScheme: 'dark',
-  primaryColor: 'cyan',
+  primaryColor: 'hotpink',
+  primaryShade: 3,
   // https://mantine.dev/theming/theme-object/#colors
   // https://mantine.dev/theming/colors/
-  white: 'yellow', // seems to be used for some elements color style in dark scheme
+  white: '#ffe2f4', // seems to be used for some elements color style in dark scheme
   black: 'green', // Seems ignored in dark scheme?
   colors: {
     // https://mantine.dev/guides/dark-theme/#colors
     // Some mantine components are hard-coded to use the `dark` color in dark scheme,
     // while other mantine components may still use the `primaryColor` choice.
     // You can override the `dark` color shades here:
-    dark: [
-      '#fae6ff', // shade 0 - used for text color in dark scheme
-      '#e7b8fb',
-      '#d38bf5', // dimmed text shade
-      '#2AC9DE', // placeholder text in the input fields
-      '#b02fe9',
-      '#9617d0',
-      '#7510a3',
-      '#530a75', // shade 7 - used for body background color in dark scheme
-      '#330548',
-      '#14001c',
+    // dark: [],
+    hotpink: [
+      '#ffe2f4',
+      '#ffb2da',
+      '#ff80bf',
+      '#fe4ea6', //this one
+      '#fd218c',
+      '#e40d73',
+      '#b20559',
+      '#800040',
+      '#4e0026',
+      '#1f000f',
     ],
   },
+  //components: {
+  //  MultiSelect: {
+  //    defaultValueLabel: { backgroundColor: 'hotpink' },
+  //  },
+  //},
   // Let's change our logo svg colours for dark mode!
   other: {
     logo: {
-      text: 'cyan',
-      symbol: '#fe87f9',
+      text: 'gold',
+      symbol: 'hotpink',
     },
   },
 }
