@@ -14,7 +14,7 @@ export default function SavedJobs() {
   // Yet if all have the key 0, the problem doesn't happen :/
   const savedJobs = favourites.map((jobId, i) => (
     <li key={jobId + '-' + i}>
-      <JobCard job={jobs[jobId]} showRemove={true} />
+      <JobCard job={jobs[i]} showRemove={true} />
     </li>
   ))
 
