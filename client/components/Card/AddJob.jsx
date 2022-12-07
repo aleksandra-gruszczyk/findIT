@@ -47,6 +47,7 @@ export default function AddJob() {
         logo_bg: 'black',
       })
       .then((job) => {
+        addForm.reset()
         updateNotification({
           id: 'add-job',
           color: '#115D81',
@@ -59,30 +60,31 @@ export default function AddJob() {
   }
 
   return (
-    <Container style={{ width: 500 }}>
-      <form onSubmit={addForm.onSubmit(handleSubmit)}>
-        <TextInput
-          label='Role'
-          placeholder='Role'
-          withAsterisk
-          {...addForm.getInputProps('role')}
-        />
-        <TextInput
-          label='Location'
-          placeholder='Location'
-          withAsterisk
-          {...addForm.getInputProps('location')}
-        />
-        <TextInput
-          label='Byline'
-          placeholder='Provide a short summary'
-          {...addForm.getInputProps('byline')}
-        />
-        <Textarea
-          label='Details'
-          placeholder='In-depth job summary'
-          {...addForm.getInputProps('details')}
-        />
+    <form onSubmit={addForm.onSubmit(handleSubmit)}>
+      <TextInput
+        label='Role'
+        placeholder='Role'
+        withAsterisk
+        required
+        {...addForm.getInputProps('role')}
+      />
+      <TextInput
+        label='Location'
+        placeholder='Location'
+        withAsterisk
+        required
+        {...addForm.getInputProps('location')}
+      />
+      <TextInput
+        label='Byline'
+        placeholder='Provide a short summary'
+        {...addForm.getInputProps('byline')}
+      />
+      <Textarea
+        label='Details'
+        placeholder='In-depth job summary'
+        {...addForm.getInputProps('details')}
+      />
 
         <MultiSelect
           data={choices.skills.map(({ skill, id }) => ({
