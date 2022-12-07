@@ -7,7 +7,7 @@ export function TutorialCard() {
     <Card shadow='sm' p='lg' radius='md' withBorder css={styles.card}>
       <Card.Section>
         <Center style={{ width: '100%', height: 200 }}>
-          <Logo />
+          <Logo monochrome />
         </Center>
       </Card.Section>
       <div>
@@ -35,5 +35,9 @@ const styles = {
 
     /* prevent text selection */
     user-select: none;
+
+    background-color: #f7dec0;
+    border: 10px solid white;
+    border-radius: 22px;
   `,
 }

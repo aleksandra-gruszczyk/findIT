@@ -43,8 +43,8 @@ export default function AddJob() {
       .addJob({
         ...values,
         company_name: 'Xero',
-        logo: 'xero.png',
-        logo_bg: 'black',
+        logo: 'xero.svg',
+        logo_bg: 'xero-bg.jpeg',
       })
       .then((job) => {
         addForm.reset()
@@ -60,31 +60,32 @@ export default function AddJob() {
   }
 
   return (
-    <form onSubmit={addForm.onSubmit(handleSubmit)}>
-      <TextInput
-        label='Role'
-        placeholder='Role'
-        withAsterisk
-        required
-        {...addForm.getInputProps('role')}
-      />
-      <TextInput
-        label='Location'
-        placeholder='Location'
-        withAsterisk
-        required
-        {...addForm.getInputProps('location')}
-      />
-      <TextInput
-        label='Byline'
-        placeholder='Provide a short summary'
-        {...addForm.getInputProps('byline')}
-      />
-      <Textarea
-        label='Details'
-        placeholder='In-depth job summary'
-        {...addForm.getInputProps('details')}
-      />
+    <Container style={{ width: 500 }}>
+      <form onSubmit={addForm.onSubmit(handleSubmit)}>
+        <TextInput
+          label='Role'
+          placeholder='Role'
+          withAsterisk
+          required
+          {...addForm.getInputProps('role')}
+        />
+        <TextInput
+          label='Location'
+          placeholder='Location'
+          withAsterisk
+          required
+          {...addForm.getInputProps('location')}
+        />
+        <TextInput
+          label='Byline'
+          placeholder='Provide a short summary'
+          {...addForm.getInputProps('byline')}
+        />
+        <Textarea
+          label='Details'
+          placeholder='In-depth job summary'
+          {...addForm.getInputProps('details')}
+        />
 
         <MultiSelect
           data={choices.skills.map(({ skill, id }) => ({

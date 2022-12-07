@@ -22,8 +22,9 @@ export default function Filter() {
 
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
-      <Flex align={'end'} gap='md'>
+      <Flex align={'flex-start'} gap='md' maw={600}>
         <Select
+          w={130}
           label='Choose location'
           placeholder='Pick one'
           clearable
@@ -32,18 +33,18 @@ export default function Filter() {
         />
 
         <MultiSelect
+          w={350}
           data={choices.skills.map(({ skill }) => skill)}
-          label='Your favorite frameworks/libraries'
-          placeholder='Pick all that you like'
+          label='Skills'
+          placeholder='What do you like working with?'
           searchable
           clearable
           nothingFound='Nothing found'
-          w={500}
           {...form.getInputProps('skills')}
         />
 
-        <Button type='submit' radius='md'>
-          findIT!
+        <Button type='submit' radius='md' mt={26}>
+          find IT!
         </Button>
       </Flex>
     </form>

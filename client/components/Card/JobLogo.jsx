@@ -1,24 +1,27 @@
 import placeholder from '@assets/image-placeholder.svg'
-import { Image } from '@mantine/core'
+import { BackgroundImage, Image } from '@mantine/core'
 
 export default function JobLogo({ logo }) {
   return (
     <div
       style={{
         ...bg(logo.bg),
-        height: 200,
         backgroundSize: 'cover',
+        height: 200,
+        padding: 32,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: 32,
+        // Prevent browser showing image drag overlay:
+        pointerEvents: 'none',
       }}
     >
       <Image
         height={100}
         src={'/assets/logo/' + logo.url}
-        alt='With default placeholder'
+        alt='Company Logo'
         withPlaceholder
+        placeholder={<BackgroundImage src='/assets/logo/xero-bg.jpeg' />}
         fit='contain'
       />
     </div>

@@ -2,14 +2,12 @@ import { Logo } from '@components/Graphics'
 import { Box, Group, Header } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
-import XeroHeader from './XeroHeader'
-
 export default function NavHeader({ children }) {
   return (
     <Box w='100%'>
       <Header
         height={80}
-        px='md'
+        px='xs'
         // Without theme, manual inline styles:
         // Has priority over sx and other style overrides:
         // style={{

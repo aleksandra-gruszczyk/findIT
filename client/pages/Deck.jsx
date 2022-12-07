@@ -16,9 +16,7 @@ export default function CardView() {
     // <div css={styles.cardView}>
     <StyledCardView>
       <CardStack />
-      <div style={{ maxWidth: 500, margin: '0 auto' }}>
-        <FilterForm />
-      </div>
+      <FilterForm />
       {/* </div> */}
     </StyledCardView>
   )
@@ -64,10 +62,18 @@ export function CardStack() {
 // Using styled API to make a component instead of using the `css` prop
 // can accept a function in `${}` to use the theme prop:
 const StyledCardView = styled.div`
+  /* Centers the children, primarily for the form component */
+  display: flex;
+  justify-content: center;
+
+  /* All below required for:
+    - Avoiding clipped drag bounds
+    - Ensures minimum height of drag area, so that cards stay below the form.
+  */
+  /* Extend the drag area to full bounds of the AppShell content */
   width: 100%;
   /* Ensure that absolute children are contained within this parent */
   position: relative;
   /* This element will be given any remaining space on the flex-axis */
   flex-grow: 1;
-  /* background: lightblue; */
 `
