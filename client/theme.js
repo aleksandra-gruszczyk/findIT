@@ -24,7 +24,7 @@ const lightTheme = {
   // https://mantine.dev/theming/theme-object/#colors
   colors: {
     customLight: [
-      '#C49DB3',
+      '#363B6E',
       '#F6F3E8',
       '#E7C7B4',
       '#F7DEC0',
