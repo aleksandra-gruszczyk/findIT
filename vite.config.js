@@ -33,6 +33,10 @@ export default defineConfig({
   // https://vitejs.dev/config/server-options.html#server-proxy
   server: {
     proxy: {
+      '/assets': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
       '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,

@@ -1,7 +1,7 @@
 // Data prep for 2nd and 3rd seeds
 
 const mockData = [
-  {company: "fingo", skills: ['Java']},
+  {company: "ezyvet", skills: ['PHP', 'AWS', 'SQL', 'React', 'Typescript', 'NodeJS']},
   {company: "tribe", skills: ['.Net', 'React Native']},
   {company: "radford", skills: ['.Net', 'C#', 'HTML', 'CSS', 'Javascript', 'Blazor']},
   {company: "sitehost", skills: ['PHP', 'Python', 'Go']},
