@@ -1,4 +1,4 @@
-import { Homepage } from '@components/Graphics'
+import { FavouritesPage, Homepage } from '@components/Graphics'
 import {
   Button,
   Flex,
@@ -35,6 +35,7 @@ export default function LandingView() {
         align='center'
         direction='row'
         wrap='wrap'
+        mt='25px'
       >
         <div>
           <Heading />
