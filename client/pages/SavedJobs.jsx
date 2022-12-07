@@ -1,8 +1,9 @@
 import { JobCard } from '@components/Card'
+import { FavouritesPage } from '@components/Graphics'
 import { css } from '@emotion/react'
+import { Flex } from '@mantine/core'
 import useStoreJobFavourites from '@store/jobFavourites'
 import useStoreJobs from '@store/jobs'
-
 export default function SavedJobs() {
   const jobs = useStoreJobs((state) => state.jobs)
   const favourites = useStoreJobFavourites((state) => state.favourites)
@@ -16,7 +17,12 @@ export default function SavedJobs() {
     </li>
   ))
 
-  return <ul css={grid}>{savedJobs}</ul>
+  return (
+      <Flex>
+        <ul css={grid}>{savedJobs}</ul>
+        <FavouritesPage width={600} />
+      </Flex>
+  )
 }
 
 const grid = css`

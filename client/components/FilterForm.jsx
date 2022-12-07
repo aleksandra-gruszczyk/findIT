@@ -1,4 +1,4 @@
-import { Button, MultiSelect, Select } from '@mantine/core'
+import { Button, Flex, MultiSelect, Select } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import useStoreJobFilters from '@store/jobFilters'
 import useStoreJobs from '@store/jobs'
@@ -22,28 +22,30 @@ export default function Filter() {
 
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
-      <Select
-        label='Choose location'
-        placeholder='Pick one'
-        clearable
-        data={choices.regions}
-        {...form.getInputProps('location')}
-      />
+      <Flex align={'end'} gap='md'>
+        <Select
+          label='Choose location'
+          placeholder='Pick one'
+          clearable
+          data={choices.regions}
+          {...form.getInputProps('location')}
+        />
 
-      <MultiSelect
-        data={choices.skills.map(({ skill }) => skill)}
-        label='Your favorite frameworks/libraries'
-        placeholder='Pick all that you like'
-        searchable
-        clearable
-        nothingFound='Nothing found'
-        w={500}
-        {...form.getInputProps('skills')}
-      />
-      <br />
-      <Button type='submit' radius='md'>
-        findIT!
-      </Button>
+        <MultiSelect
+          data={choices.skills.map(({ skill }) => skill)}
+          label='Your favorite frameworks/libraries'
+          placeholder='Pick all that you like'
+          searchable
+          clearable
+          nothingFound='Nothing found'
+          w={500}
+          {...form.getInputProps('skills')}
+        />
+
+        <Button type='submit' radius='md'>
+          findIT!
+        </Button>
+      </Flex>
     </form>
   )
 }
