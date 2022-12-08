@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "workspaces": [
+    "presentation"
+  ],
   "scripts": {
     "start": "node server",
     "dev": "run-p dev:client dev:server",
@@ -22,7 +25,10 @@
     "format": "prettier --write .",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "slides:build": "npm -w presentation run build",
+    "slides:dev": "npm -w presentation run dev",
+    "slides:export": "npm -w presentation run export"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
